@@ -37,4 +37,5 @@ It is licensed under the MIT License, see [COPYING][] file.
 
 [COPYING]: https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING
 
+    Copyright (c) 2012 Yu-Jie Lin
     Copyright (c) 2009 Russ Painter
