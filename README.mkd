@@ -1,0 +1,20 @@
+jQuery TextFill
+===============
+
+It resizes text to fit into a container and makes font size as big as possible.
+
+This jQuery plugin was created by Russ Painter around May 2009, beginning with a StackOverflow [question][soq]. In very early 2012, Yu-Jie Lin helped to move the project to GitHub with version 0.1 and obtained the clearly stated open source licensing from Russ.
+
+[soq]: http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
+
+Demostration
+------------
+
+TBD.
+
+License
+-------
+
+It is licensed under the MIT License, see COPYING file.
+
+Copyright (c) 2009 Russ Painter
