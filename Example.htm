@@ -1,0 +1,97 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<script type="text/javascript" src="jquery-1.3.2.min.js" ></script>
+	<script type="text/javascript" src="jquery-textFill-0.1.js" ></script>
+	<title>Example of TextFill jQuery Plugin</title>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.jtextfill').textfill({ maxFontPixels: 70 });
+
+			$('#dyntext').keyup(function() {
+				$('.dyntextval').html(this.value);
+				$('.jtextfill').textfill({ maxFontPixels: 70 });
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		body
+		{
+			background-color:#ddf;
+		}
+		#dyntext
+		{
+			width:400px;
+		}
+		.monkeythink
+		{
+			background-image:url("ChimpThinking.png");
+			width:200px;
+			height:286px;
+			position:relative;
+			float:left;
+		}
+		.monkeythink .jtextfill
+		{
+			text-align:center;
+			background-color:#fff;
+			position:absolute;
+			left:20px;
+			top:30px;
+			width:150px;
+			height:70px;
+		}
+		.computer
+		{
+			background-image:url("Computer.png");
+			width:450px;
+			height:424px;
+			position:relative;
+			float:right;
+		}
+		.computer .jtextfill
+		{
+			position:absolute;
+			left:85px;
+			top:70px;
+			width:285px;
+			height:210px;
+			color:#88ff88;
+		}
+		.computer .jtextfill span
+		{
+			font-family:OCR A Extended;
+		}
+		.computerglare
+		{
+			background-image:url("Computerglare.png");
+			width:450px;
+			height:424px;
+			position:absolute;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+			<h1>Example of TextFill jQuery Plugin</h1>
+			<label for="dyntext">What is monkey thinking?</label>
+			<input type="text" name="dyntext" id="dyntext" value="e=mc²"></textarea>
+			<hr />
+			<div class="monkeythink">
+				<div class="jtextfill">
+					<span class="dyntextval">e=mc²</span>
+				</div>
+			</div>
+			<div class="computer">
+				<div class="jtextfill">
+					<span class="dyntextval">e=mc²</span>
+				</div>
+				<div class="computerglare"></div>
+			</div>
+	</div>
+</body>
+</html>
