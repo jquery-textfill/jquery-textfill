@@ -10,7 +10,9 @@ This jQuery plugin was created by Russ Painter around May 2009, beginning with a
 Demostration
 ------------
 
-TBD.
+[Example][example]
+
+[example]: http://jquery-textfill.github.com/jquery-textfill/Example.htm
 
 License
 -------

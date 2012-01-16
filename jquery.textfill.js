@@ -6,8 +6,8 @@
  * @date      05-27-2009
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
- * @homepage  TBD
- * @example   TBD
+ * @homepage  https://github.com/jquery-textfill/jquery-textfill
+ * @example   http://jquery-textfill.github.com/jquery-textfill/Example.htm
 */
 ; (function($) {
   /**
