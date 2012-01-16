@@ -14,9 +14,27 @@ Demostration
 
 [example]: http://jquery-textfill.github.com/jquery-textfill/Example.htm
 
+Usage
+-----
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://example.com/path/to/jquery.textfill.js"></script>
+
+    <div class='textfill' style='width:100px;height:50px;'>
+      <span>The quick brown fox jumps over the lazy dog</span>
+    </div>
+
+    <script>
+    $(function(){
+      $('.textfill').textfill({ maxFontPixels: 36 });
+    });
+    </script>
+
 License
 -------
 
-It is licensed under the MIT License, see COPYING file.
+It is licensed under the MIT License, see [COPYING][] file.
 
-Copyright (c) 2009 Russ Painter
+[COPYING]: https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING
+
+    Copyright (c) 2009 Russ Painter
