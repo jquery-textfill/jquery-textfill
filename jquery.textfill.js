@@ -3,8 +3,8 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.1.1
- * @date      01-16-2012
+ * @version   0.1.2
+ * @date      01-29-2012
  * @copyright (c) 2012 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
@@ -25,28 +25,20 @@
     };
     var Opts = jQuery.extend(defaults, options);
     return this.each(function() {
-      var fontSize = Opts.minFontPixels;
-      var minFontPixels = Opts.minFontPixels;
       var ourText = $(Opts.innerTag + ':visible:first', this);
       var maxHeight = $(this).height();
       var maxWidth = $(this).width();
-      var textHeight;
-      var textWidth;
+      var fontSize;
       
-      var low = Opts.minFontPixels;
-      var high = Opts.maxFontPixels;
-      while(low <= high) {
-        var mid = Math.floor(low+high)/2;
+      var minFontPixels = Opts.minFontPixels;
+      var maxFontPixels = Opts.maxFontPixels;
+      while (fontSize = Math.floor(minFontPixels + maxFontPixels) / 2,
+             minFontPixels <= maxFontPixels) {
         ourText.css('font-size', fontSize);
-        textHeight = ourText.height();
-        textWidth = ourText.width();
-        if(textHeight < maxHeight && textWidth < maxWidth) {
-            fontSize = mid;
-            low = mid+1;
-        }
-        else {
-            high = mid-1;
-        }
+        if (ourText.height() < maxHeight && ourText.width() < maxWidth)
+          minFontPixels = fontSize + 1;
+        else
+          maxFontPixels = fontSize - 1;
       }
     });
   };

@@ -1,6 +1,11 @@
 CHANGES
 =======
 
+## Version 0.1.2 (2012-01-29T12:46:12Z)
+
+ * Use binary search instead of plain do-while to accelerate the function.
+   (by acsaga)
+
 ## Version 0.1.1
 
   Add minFontPixels parameter

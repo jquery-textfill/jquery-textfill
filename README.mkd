@@ -30,6 +30,11 @@ Usage
     });
     </script>
 
+Help and Support
+----------------
+
+Please use Issues for reporting bugs or requesting features. Feel free to fork and to open pull request on anything can improve this project, even a typo fix is very welcome.
+
 License
 -------
 
