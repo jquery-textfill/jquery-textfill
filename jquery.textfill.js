@@ -25,19 +25,29 @@
     };
     var Opts = jQuery.extend(defaults, options);
     return this.each(function() {
-      var fontSize = Opts.maxFontPixels;
+      var fontSize = Opts.minFontPixels;
       var minFontPixels = Opts.minFontPixels;
       var ourText = $(Opts.innerTag + ':visible:first', this);
       var maxHeight = $(this).height();
       var maxWidth = $(this).width();
       var textHeight;
       var textWidth;
-      do {
+      
+      var low = Opts.minFontPixels;
+      var high = Opts.maxFontPixels;
+      while(low <= high) {
+        var mid = Math.floor(low+high)/2;
         ourText.css('font-size', fontSize);
         textHeight = ourText.height();
         textWidth = ourText.width();
-        fontSize = fontSize - 1;
-      } while ((textHeight > maxHeight || textWidth > maxWidth) && fontSize >= minFontPixels);
+        if(textHeight < maxHeight && textWidth < maxWidth) {
+            fontSize = mid;
+            low = mid+1;
+        }
+        else {
+            high = mid-1;
+        }
+      }
     });
   };
 })(jQuery);
