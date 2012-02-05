@@ -18,11 +18,15 @@ Usage
 -----
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="http://example.com/path/to/jquery.textfill.js"></script>
+    <script src="http://jquery-textfill.github.com/jquery-textfill/jquery.textfill.min.js"></script>
+
+The code above uses minified version. By default options, you need to put text inside of `<span/>`:
 
     <div class='textfill' style='width:100px;height:50px;'>
       <span>The quick brown fox jumps over the lazy dog</span>
     </div>
+
+Initializing the plugin:
 
     <script>
     $(function(){
