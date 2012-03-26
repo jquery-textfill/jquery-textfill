@@ -3,7 +3,7 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.1.2
+ * @version   0.1.3
  * @date      01-29-2012
  * @copyright (c) 2012 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
@@ -21,10 +21,13 @@
     var defaults = {
       maxFontPixels: 40,
       minFontPixels: 4,
-      innerTag: 'span'
+      innerTag: 'span',
+      callback: null,
+      complete: null
     };
     var Opts = jQuery.extend(defaults, options);
-    return this.each(function() {
+    
+    this.each(function() {
       var ourText = $(Opts.innerTag + ':visible:first', this);
       var maxHeight = $(this).height();
       var maxWidth = $(this).width();
@@ -40,6 +43,14 @@
         else
           maxFontPixels = fontSize - 1;
       }
+      
+      // call callback on each result
+      if (Opts.callback) Opts.callback(this);
     });
+    
+    // call complete when all is complete
+    if (Opts.complete) Opts.complete(this);
+    
+    return this;
   };
 })(jQuery);
