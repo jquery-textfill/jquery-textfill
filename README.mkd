@@ -17,14 +17,14 @@ Demostration
 Usage
 -----
 
-```js
+```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://jquery-textfill.github.com/jquery-textfill/jquery.textfill.min.js"></script>
 ```
 
 The code above uses minified version. By default options, you need to put text inside of `<span/>`:
 
-```js
+```html
 <div class='textfill' style='width:100px;height:50px;'>
   <span>The quick brown fox jumps over the lazy dog</span>
 </div>
@@ -38,7 +38,7 @@ $(selector).textfile(options);
 
 For example,
 
-```js
+```html
 <script>
 $(function(){
   $('.textfill').textfill({ maxFontPixels: 36 });
