@@ -17,22 +17,41 @@ Demostration
 Usage
 -----
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="http://jquery-textfill.github.com/jquery-textfill/jquery.textfill.min.js"></script>
+```js
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://jquery-textfill.github.com/jquery-textfill/jquery.textfill.min.js"></script>
+```
 
 The code above uses minified version. By default options, you need to put text inside of `<span/>`:
 
-    <div class='textfill' style='width:100px;height:50px;'>
-      <span>The quick brown fox jumps over the lazy dog</span>
-    </div>
+```js
+<div class='textfill' style='width:100px;height:50px;'>
+  <span>The quick brown fox jumps over the lazy dog</span>
+</div>
+```
 
-Initializing the plugin:
+### Initialization
 
-    <script>
-    $(function(){
-      $('.textfill').textfill({ maxFontPixels: 36 });
-    });
-    </script>
+```js
+$(selector).textfile(options);
+```
+
+For example,
+
+```js
+<script>
+$(function(){
+  $('.textfill').textfill({ maxFontPixels: 36 });
+});
+</script>
+```
+
+### Options
+
+ * `minFontPixels` and `maxFontPixels`: font size range
+ * `innerTag`: by default all `<span/>`s' font size in `$(selector)` will be changed to fill.
+ * `callback`: callback when each element's (`innerTag`) font size is resized.
+ * `complete`: callback when all elements are done.
 
 Help and Support
 ----------------
