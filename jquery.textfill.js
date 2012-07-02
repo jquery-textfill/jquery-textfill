@@ -22,6 +22,7 @@
       maxFontPixels: 40,
       minFontPixels: 4,
       innerTag: 'span',
+      widthOnly: false,
       callback: null,
       complete: null
     };
@@ -35,15 +36,18 @@
       
       var minFontPixels = Opts.minFontPixels;
       var maxFontPixels = Opts.maxFontPixels;
-      while (minFontPixels < maxFontPixels - 1) {
-        fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
-        ourText.css('font-size', fontSize);
-        if (ourText.height() < maxHeight)
-          minFontPixels = fontSize;
-        else
-          maxFontPixels = fontSize;
-      }
-      var HfontSize = minFontPixels;
+      var HfontSize = undefined;
+      if (!Opts.widthOnly) {
+        while (minFontPixels < maxFontPixels - 1) {
+          fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
+          ourText.css('font-size', fontSize);
+          if (ourText.height() < maxHeight)
+            minFontPixels = fontSize;
+          else
+            maxFontPixels = fontSize;
+        }
+        HfontSize = minFontPixels;
+        }
 
       minFontPixels = Opts.minFontPixels;
       maxFontPixels = Opts.maxFontPixels;
@@ -57,7 +61,10 @@
       }
       var WfontSize = minFontPixels
 
-      ourText.css('font-size', Math.min(HfontSize, WfontSize));
+      if (Opts.widthOnly)
+        ourText.css('font-size', WfontSize);
+      else
+        ourText.css('font-size', Math.min(HfontSize, WfontSize));
 
       // call callback on each result
       if (Opts.callback) Opts.callback(this);
