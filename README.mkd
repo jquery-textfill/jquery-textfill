@@ -33,7 +33,7 @@ The code above uses minified version. By default options, you need to put text i
 ### Initialization
 
 ```js
-$(selector).textfile(options);
+$(selector).textfill(options);
 ```
 
 For example,
