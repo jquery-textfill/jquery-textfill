@@ -3,8 +3,8 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.2
- * @date      07-02-2012
+ * @version   0.2.1
+ * @date      11-11-2012
  * @copyright (c) 2012 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
@@ -32,7 +32,7 @@
     
     this.each(function() {
       var ourText = $(Opts.innerTag + ':visible:first', this);
-      // Explicit parameters use default behavior when falsey
+      // Use explicit dimensions when specified
       var maxHeight = Opts.explicitHeight || $(this).height();
       var maxWidth = Opts.explicitWidth || $(this).width();
       var fontSize;

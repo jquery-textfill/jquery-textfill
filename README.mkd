@@ -53,6 +53,7 @@ $(function(){
  * `callback`: callback when each element's (`innerTag`) font size is resized.
  * `complete`: callback when all elements are done.
  * `widthOnly`: only resizing for width restraint, this is intentionally used with CSS `white-space: nowrap` for header tags.
+ * `explicitWidth` and `explicitHeight`: explicit dimension.
 
 Help and Support
 ----------------

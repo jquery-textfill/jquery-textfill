@@ -1,6 +1,10 @@
 CHANGES
 =======
 
+## Version 0.2.1 (2012-11-11T07:04:20Z)
+
+ * Add explicitWidth and explicitHeight options (#6)
+
 ## Version 0.2 (2012-07-02T17:13:27Z)
 
  * Fix resizing algorithm (#3)
