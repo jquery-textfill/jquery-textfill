@@ -24,14 +24,17 @@
       innerTag: 'span',
       widthOnly: false,
       callback: null,
-      complete: null
+      complete: null,
+      explicitWidth: null,
+      explicitHeight: null
     };
     var Opts = jQuery.extend(defaults, options);
     
     this.each(function() {
       var ourText = $(Opts.innerTag + ':visible:first', this);
-      var maxHeight = $(this).height();
-      var maxWidth = $(this).width();
+      // Explicit parameters use default behavior when falsey
+      var maxHeight = Opts.explicitHeight || $(this).height();
+      var maxWidth = Opts.explicitWidth || $(this).width();
       var fontSize;
       
       var minFontPixels = Opts.minFontPixels;
