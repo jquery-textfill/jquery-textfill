@@ -3,9 +3,9 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.2.1
- * @date      11-11-2012
- * @copyright (c) 2012 Yu-Jie Lin
+ * @version   0.3
+ * @date      2013-01-04
+ * @copyright (c) 2012-2013 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
  * @homepage  https://github.com/jquery-textfill/jquery-textfill
@@ -38,7 +38,8 @@
       var fontSize;
       
       var minFontPixels = Opts.minFontPixels;
-      var maxFontPixels = Opts.maxFontPixels;
+      var maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
+
       var HfontSize = undefined;
       if (!Opts.widthOnly) {
         while (minFontPixels < maxFontPixels - 1) {
@@ -50,10 +51,10 @@
             maxFontPixels = fontSize;
         }
         HfontSize = minFontPixels;
-        }
+      }
 
       minFontPixels = Opts.minFontPixels;
-      maxFontPixels = Opts.maxFontPixels;
+      maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
       while (minFontPixels < maxFontPixels - 1) {
         fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
         ourText.css('font-size', fontSize);

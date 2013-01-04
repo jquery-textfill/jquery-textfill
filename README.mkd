@@ -7,8 +7,8 @@ This jQuery plugin was created by Russ Painter around May 2009, beginning with a
 
 [soq]: http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
 
-Demostration
-------------
+Demonstration
+-------------
 
 [Example][example]
 
@@ -48,7 +48,8 @@ $(function(){
 
 ### Options
 
- * `minFontPixels` and `maxFontPixels`: font size range
+ * `minFontPixels`: minimal font size. Default is 4.
+ * `maxFontPixels`: sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate. Default is 40.
  * `innerTag`: by default all `<span/>`s' font size in `$(selector)` will be changed to fill.
  * `callback`: callback when each element's (`innerTag`) font size is resized.
  * `complete`: callback when all elements are done.
@@ -67,5 +68,5 @@ It is licensed under the MIT License, see [COPYING][] file.
 
 [COPYING]: https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING
 
-    Copyright (c) 2012 Yu-Jie Lin
+    Copyright (c) 2012-2013 Yu-Jie Lin
     Copyright (c) 2009 Russ Painter

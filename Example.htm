@@ -6,13 +6,18 @@
   <script type="text/javascript" src="jquery.textfill.js" ></script>
   <title>Example of TextFill jQuery Plugin</title>
   <script type="text/javascript">
-    $(document).ready(function() {
-      $('.jtextfill').textfill({ maxFontPixels: 70 });
+    function update() {
+      var size = parseInt($('#maxsize').val(), 10);
+      if (!isNaN(size)) {
+        $('.dyntextval').html($('#dyntext').value);
+        $('.jtextfill').textfill({maxFontPixels: size});
+      }
+    }
 
-      $('#dyntext').keyup(function() {
-        $('.dyntextval').html(this.value);
-        $('.jtextfill').textfill({ maxFontPixels: 70 });
-      });
+    $(function () {
+      $('#maxsize').keyup(update);
+      $('#dyntext').keyup(update);
+      update()
     });
   </script>
 
@@ -81,8 +86,14 @@
 <body>
   <div>
       <h1>Example of TextFill jQuery Plugin</h1>
-      <label for="dyntext">What is monkey thinking?</label>
-      <input type="text" name="dyntext" id="dyntext" value="e=mc²"></textarea>
+      <div>
+        <label for="dyntext">What is monkey thinking?</label>
+        <input type="text" id="dyntext" value="e=mc²"></input>
+      </div>
+      <div>
+        <label for="maxsize">Maximal font size in pixels?</label>
+        <input type="text" id="maxsize" value="0"></input>
+      </div>
       <hr />
       <div class="monkeythink">
         <div class="jtextfill">

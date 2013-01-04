@@ -1,6 +1,10 @@
 CHANGES
 =======
 
+## Version 0.3 (2013-01-04T16:27:52Z)
+
+ * Allow to use *MaxFontPixels <= 0* to make sizing as big as possible.
+
 ## Version 0.2.1 (2012-11-11T07:04:20Z)
 
  * Add explicitWidth and explicitHeight options (#6)
