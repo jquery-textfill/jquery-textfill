@@ -12,7 +12,7 @@ Demonstration
 
 [Example][example]
 
-[example]: http://jquery-textfill.github.com/jquery-textfill/Example.htm
+[example]: http://jquery-textfill.github.com/jquery-textfill/example.htm
 
 Usage
 -----
