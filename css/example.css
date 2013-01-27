@@ -1,58 +1,57 @@
-body
-{
+body {
   background-color:#ddf;
 }
-#dyntext
-{
+
+#dyntext {
   width:400px;
 }
-.monkeythink
-{
-  background-image:url("/img/ChimpThinking.png");
-  width:200px;
-  height:286px;
+
+.monkeythink {
   position:relative;
   float:left;
+  width:200px;
+  height:286px;
+  background-image:url("/img/ChimpThinking.png");
 }
-.monkeythink .jtextfill
-{
-  text-align:center;
-  background-color:#fff;
+
+.monkeythink .jtextfill {
   position:absolute;
-  left:20px;
   top:30px;
+  left:20px;
   width:150px;
   height:70px;
+  background-color:#fff;
+  text-align:center;
 }
-.monkeythink .jtextfill span
-{
-  font-family: Times;
+
+.monkeythink .jtextfill span {
+  font-family: "Happy Monkey";
 }
-.computer
-{
-  background-image:url("/img/Computer2.png");
-  width:450px;
-  height:424px;
+
+.computer {
   position:relative;
   float:right;
+  width:450px;
+  height:424px;
+  background-image:url("/img/Computer2.png");
 }
-.computer .jtextfill
-{
+
+.computer .jtextfill {
   position:absolute;
-  left:85px;
   top:70px;
+  left:85px;
   width:285px;
   height:210px;
   color:#88ff88;
 }
-.computer .jtextfill span
-{
-  font-family:OCR A Extended, OCRA;
+
+.computer .jtextfill span {
+  font-family: "VT323";
 }
-.computerglare
-{
-  background-image:url("/img/ComputerGlare.png");
+
+.computerglare {
+  position:absolute;
   width:450px;
   height:424px;
-  position:absolute;
+  background-image:url("/img/ComputerGlare.png");
 }
