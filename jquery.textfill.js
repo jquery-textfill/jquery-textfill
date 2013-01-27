@@ -85,7 +85,7 @@
       var maxHeight = Opts.explicitHeight || $(this).height();
       var maxWidth = Opts.explicitWidth || $(this).width();
       var fontSize;
-      
+
       if (Opts.debug) {
         console.log('Opts: ', Opts);
         console.log('Vars:' +
@@ -113,10 +113,10 @@
       // call callback on each result
       if (Opts.callback) Opts.callback(this);
     });
-    
+
     // call complete when all is complete
     if (Opts.complete) Opts.complete(this);
-    
+
     return this;
   };
 })(jQuery);
