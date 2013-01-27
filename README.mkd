@@ -48,6 +48,7 @@ $(function(){
 
 ### Options
 
+ * `debug`: output debug message to console. Default is false.
  * `minFontPixels`: minimal font size. Default is 4.
  * `maxFontPixels`: sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate. Default is 40.
  * `innerTag`: by default all `<span/>`s' font size in `$(selector)` will be changed to fill.

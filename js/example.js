@@ -2,7 +2,7 @@ function update() {
   var size = parseInt($('#maxsize').val(), 10);
   if (!isNaN(size)) {
     $('.dyntextval').html($('#dyntext').value);
-    $('.jtextfill').textfill({maxFontPixels: size});
+    $('.jtextfill').textfill({debug: true, maxFontPixels: size});
   }
 }
 

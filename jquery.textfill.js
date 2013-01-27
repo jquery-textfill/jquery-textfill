@@ -3,7 +3,7 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.3
+ * @version   0.4dev
  * @date      2013-01-04
  * @copyright (c) 2012-2013 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
@@ -19,6 +19,7 @@
   */
   $.fn.textfill = function(options) {
     var defaults = {
+      debug: false,
       maxFontPixels: 40,
       minFontPixels: 4,
       innerTag: 'span',
@@ -29,7 +30,32 @@
       explicitHeight: null
     };
     var Opts = jQuery.extend(defaults, options);
-    
+
+    function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
+      if (!Opts.debug) {
+        return;
+      }
+
+      function _m(v1, v2) {
+        var marker = ' / ';
+        if (v1 > v2) {
+          marker = ' > ';
+        } else if (v1 == v2) {
+          marker = ' = ';
+        }
+        return marker;
+      }
+
+      console.debug(
+        prefix +
+        'font: ' + ourText.css('font-size') +
+        ', H: ' + ourText.height() + _m(ourText.height(), maxHeight) + maxHeight +
+        ', W: ' + ourText.width()  + _m(ourText.width() , maxWidth)  + maxWidth +
+        ', minFontPixels: ' + minFontPixels +
+        ', maxFontPixels: ' + maxFontPixels
+      );
+    }
+
     this.each(function() {
       var ourText = $(Opts.innerTag + ':visible:first', this);
       // Use explicit dimensions when specified
@@ -37,39 +63,55 @@
       var maxWidth = Opts.explicitWidth || $(this).width();
       var fontSize;
       
+      if (Opts.debug) {
+        console.log('Opts: ', Opts);
+        console.log('Vars: ', {
+          maxHeight: maxHeight,
+          maxWidth: maxWidth,
+        });
+      }
+
       var minFontPixels = Opts.minFontPixels;
       var maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
-
       var HfontSize = undefined;
       if (!Opts.widthOnly) {
+        _debug_sizing('H: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
         while (minFontPixels < maxFontPixels - 1) {
           fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
           ourText.css('font-size', fontSize);
-          if (ourText.height() < maxHeight)
+          if (ourText.height() < maxHeight) {
             minFontPixels = fontSize;
-          else
+          } else {
             maxFontPixels = fontSize;
+          }
+          _debug_sizing('H: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
         }
         HfontSize = minFontPixels;
       }
 
       minFontPixels = Opts.minFontPixels;
       maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
+      _debug_sizing('W: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
       while (minFontPixels < maxFontPixels - 1) {
         fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
         ourText.css('font-size', fontSize);
-        if (ourText.width() < maxWidth)
+        if (ourText.width() < maxWidth) {
           minFontPixels = fontSize;
-        else
+        } else {
           maxFontPixels = fontSize;
+        }
+        _debug_sizing('W: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
       }
       var WfontSize = minFontPixels
 
-      if (Opts.widthOnly)
+      if (Opts.widthOnly) {
         ourText.css('font-size', WfontSize);
-      else
+      } else {
         ourText.css('font-size', Math.min(HfontSize, WfontSize));
-
+      }
+      if (Opts.debug) {
+        console.debug('Final: ' + ourText.css('font-size'));
+      }
       // call callback on each result
       if (Opts.callback) Opts.callback(this);
     });

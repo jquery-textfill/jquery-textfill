@@ -1,6 +1,10 @@
 CHANGES
 =======
 
+## Development
+
+ * Add `debug` option.
+
 ## Version 0.3 (2013-01-04T16:27:52Z)
 
  * Allow to use *MaxFontPixels <= 0* to make sizing as big as possible.
