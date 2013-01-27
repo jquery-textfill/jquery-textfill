@@ -56,9 +56,24 @@ Help and Support
 
 ### Reporting bug
 
-When report a bug, please reproduce the bug using this [jsFiddle][jsFiddle] as a template. Environment can be different and some may be fine, some may be not. Please make sure you can clearly demonstrate the bug. Also provide enough information about your system and browser, if necessary.
+When report a bug, please reproduce the bug using [Gist][] or [jsFiddle][] as a template. Environment can be different and some may be fine, some may be not. **Please make sure you can clearly demonstrate the bug** unless the bug is super easy to spot like `a < b` should be `a <= b`.
 
+When reproduce a bug, it's important that CSS matches the page where you encounter the bug, it could be crucial that container's and innertag's styles have to be exactly the same.
+
+Please also provide enough information about your system and browser, if necessary, here is a template:
+
+    TextFill version:
+    jQuery version:
+    Font family:
+    OS/Version:
+    Browser/Version:
+
+Since TextFill 0.3.1, there is debugging option, can be enabled by `debug: true`, you can also include those messages.
+
+[Gist]: https://gist.github.com/4650697
 [jsFiddle]: http://jsfiddle.net/livibetter/3gMFG/
+
+*If you can not provide a bug reprouction, then please do not report*, I could not fix something I can't see.
 
 ### Contributing
 
