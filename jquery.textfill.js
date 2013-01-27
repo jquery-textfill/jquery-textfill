@@ -79,8 +79,11 @@
         while (minFontPixels < maxFontPixels - 1) {
           fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
           ourText.css('font-size', fontSize);
-          if (ourText.height() < maxHeight) {
+          if (ourText.height() <= maxHeight) {
             minFontPixels = fontSize;
+            if (ourText.height() == maxHeight) {
+              break;
+            }
           } else {
             maxFontPixels = fontSize;
           }
@@ -95,8 +98,11 @@
       while (minFontPixels < maxFontPixels - 1) {
         fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
         ourText.css('font-size', fontSize);
-        if (ourText.width() < maxWidth) {
+        if (ourText.width() <= maxWidth) {
           minFontPixels = fontSize;
+          if (ourText.width() == maxWidth) {
+            break;
+          }
         } else {
           maxFontPixels = fontSize;
         }
