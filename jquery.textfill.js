@@ -89,6 +89,11 @@
           }
           _debug_sizing('H: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
         }
+        ourText.css('font-size', maxFontPixels);
+        if (ourText.height() <= maxHeight) {
+          minFontPixels = maxFontPixels;
+          _debug_sizing('H* ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+        }
         HfontSize = minFontPixels;
       }
 
@@ -107,6 +112,11 @@
           maxFontPixels = fontSize;
         }
         _debug_sizing('W: ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+      }
+      ourText.css('font-size', maxFontPixels);
+      if (ourText.width() <= maxWidth) {
+        minFontPixels = maxFontPixels;
+        _debug_sizing('W* ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
       }
       var WfontSize = minFontPixels
 
