@@ -87,9 +87,11 @@ These tasks are for releasing, contributors should not take on them.
 Before you submit, make sure:
 
 * Coding style generally matches.
-* Pass all tests previously have passed.
+* Pass all [tests][] previously have passed.
 * *Optional* Update README if necessary.
 * *Optional* Update CHAGES if worth mentioning.
+
+[tests]: http://jquery-textfill.github.com/jquery-textfill/tests.html
 
 License
 -------
