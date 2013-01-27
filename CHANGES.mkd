@@ -3,7 +3,10 @@ CHANGES
 
 ## Development
 
+## Version 0.3.1 (2013-01-27T05:10:51Z)
+
  * Add `debug` option.
+ * Fix a couple of bugs, they didn't size up as big as possible
 
 ## Version 0.3 (2013-01-04T16:27:52Z)
 
