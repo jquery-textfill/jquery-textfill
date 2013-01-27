@@ -54,7 +54,27 @@ $(function(){
 Help and Support
 ----------------
 
-Please use Issues for reporting bugs or requesting features. Feel free to fork and to open pull request on anything can improve this project, even a typo fix is very welcome.
+### Reporting bug
+
+When report a bug, please reproduce the bug using this [jsFiddle][jsFiddle] as a template. Environment can be different and some may be fine, some may be not. Please make sure you can clearly demonstrate the bug. Also provide enough information about your system and browser, if necessary.
+
+[jsFiddle]: http://jsfiddle.net/livibetter/3gMFG/
+
+### Contributing
+
+You are very welcome to contribute whatever you can, but **please do not**:
+
+* Update version number.
+* Generate minified file.
+
+These tasks are for releasing, contributors should not take on them.
+
+Before you submit, make sure:
+
+* Coding style generally matches.
+* Pass all tests previously have passed.
+* *Optional* Update README if necessary.
+* *Optional* Update CHAGES if worth mentioning.
 
 License
 -------
