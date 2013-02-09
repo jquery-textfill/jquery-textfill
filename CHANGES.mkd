@@ -3,6 +3,11 @@ CHANGES
 
 ## Development
 
+## Version 0.3.2 (2013-02-09T02:43:32Z)
+
+ * fix introduced global variable fontSize by `_sizing()`
+ * fix container too small for bigger font size setting (#11)
+
 ## Version 0.3.1 (2013-01-27T05:10:51Z)
 
  * Add `debug` option.
