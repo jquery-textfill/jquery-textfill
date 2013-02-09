@@ -88,17 +88,15 @@ Before you submit, make sure:
 
 * Coding style generally matches.
 * Pass all [tests][] previously have passed.
-* *Optional* Update README if necessary.
-* *Optional* Update CHAGES if worth mentioning.
+* *Optional* Update [`README`](README.mkd) if necessary.
+* *Optional* Update [`CHANGES`](CHANGES.mkd) if worth mentioning.
 
 [tests]: http://jquery-textfill.github.com/jquery-textfill/tests.html
 
 License
 -------
 
-It is licensed under the MIT License, see [COPYING][] file.
-
-[COPYING]: https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING
+It is licensed under the MIT License, see [`COPYING`](COPYING) file.
 
     Copyright (c) 2012-2013 Yu-Jie Lin
     Copyright (c) 2009 Russ Painter
