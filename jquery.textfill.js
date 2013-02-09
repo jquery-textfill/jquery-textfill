@@ -59,7 +59,7 @@
     function _sizing(prefix, ourText, func, max, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
       _debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
       while (minFontPixels < maxFontPixels - 1) {
-        fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
+        var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
         ourText.css('font-size', fontSize);
         if (func.call(ourText) <= max) {
           minFontPixels = fontSize;
