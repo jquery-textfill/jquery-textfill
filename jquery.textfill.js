@@ -84,6 +84,7 @@
       // Use explicit dimensions when specified
       var maxHeight = Opts.explicitHeight || $(this).height();
       var maxWidth = Opts.explicitWidth || $(this).width();
+      var oldFontSize = ourText.css('font-size');
       var fontSize;
 
       if (Opts.debug) {
@@ -109,6 +110,10 @@
       }
       if (Opts.debug) {
         console.debug('Final: ' + ourText.css('font-size'));
+      }
+
+      if (ourText.width() > maxWidth || ourText.height() > maxHeight) {
+        ourText.css('font-size', oldFontSize);
       }
       // call callback on each result
       if (Opts.callback) Opts.callback(this);

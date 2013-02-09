@@ -106,6 +106,7 @@ test('minFontPixels too big to fit in', function () {
     span: {
       css: {
         'font-family': 'VT323',
+        'font-size': '20px',
       },
       text: 'test'
     }
@@ -114,5 +115,5 @@ test('minFontPixels too big to fit in', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, minFontPixels: 100, maxFontPixels: 0});
-  equal($span.css('font-size'), '172px');
+  equal($span.css('font-size'), '20px');
 });
