@@ -3,6 +3,10 @@ CHANGES
 
 ## Development
 
+## Version 0.3.3 (2013-03-25T23:35:21Z)
+
+ * retag for including the manefest in the tag.
+
 ## Version 0.3.2 (2013-02-09T02:43:32Z)
 
  * fix introduced global variable fontSize by `_sizing()`
