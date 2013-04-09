@@ -32,7 +32,7 @@
     var Opts = jQuery.extend(defaults, options);
 
     function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
-      if (!Opts.debug || ) {
+      if (!Opts.debug) {
         return;
       }
       if (typeof console == 'undefined') {
