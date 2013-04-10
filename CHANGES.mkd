@@ -3,6 +3,9 @@ CHANGES
 
 ## Development
 
+ * fix error when no console.debug.
+ * add test for debug flag.
+
 ## Version 0.3.3 (2013-03-25T23:35:21Z)
 
  * retag for including the manefest in the tag.

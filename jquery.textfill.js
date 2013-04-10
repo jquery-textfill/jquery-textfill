@@ -31,17 +31,17 @@
     };
     var Opts = jQuery.extend(defaults, options);
 
-    function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
-      if (!Opts.debug) {
-        return;
-      }
-      if (typeof console == 'undefined') {
-        return;
-      }
-      if (typeof console.debug == 'undefined') {
+    function _debug() {
+      if (!Opts.debug
+      ||  typeof console == 'undefined'
+      ||  typeof console.debug == 'undefined') {
         return;
       }
 
+      console.debug.apply(console, arguments);
+    }
+
+    function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
       function _m(v1, v2) {
         var marker = ' / ';
         if (v1 > v2) {
@@ -52,7 +52,7 @@
         return marker;
       }
 
-      console.debug(
+      _debug(
         prefix +
         'font: ' + ourText.css('font-size') +
         ', H: ' + ourText.height() + _m(ourText.height(), maxHeight) + maxHeight +
@@ -93,13 +93,11 @@
       var oldFontSize = ourText.css('font-size');
       var fontSize;
 
-      if (Opts.debug) {
-        console.log('Opts: ', Opts);
-        console.log('Vars:' +
-          ' maxHeight: ' + maxHeight +
-          ', maxWidth: ' + maxWidth
-        );
-      }
+      _debug('Opts: ', Opts);
+      _debug('Vars:' +
+        ' maxHeight: ' + maxHeight +
+        ', maxWidth: ' + maxWidth
+      );
 
       var minFontPixels = Opts.minFontPixels;
       var maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
@@ -114,9 +112,7 @@
       } else {
         ourText.css('font-size', Math.min(HfontSize, WfontSize));
       }
-      if (Opts.debug) {
-        console.debug('Final: ' + ourText.css('font-size'));
-      }
+      _debug('Final: ' + ourText.css('font-size'));
 
       if (ourText.width() > maxWidth || ourText.height() > maxHeight) {
         ourText.css('font-size', oldFontSize);
