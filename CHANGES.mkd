@@ -3,6 +3,8 @@ CHANGES
 
 ## Development
 
+## Version 0.3.4 (2013-04-10T03:55:51Z)
+
  * fix error when no console.debug.
  * add test for debug flag.
 

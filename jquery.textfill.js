@@ -3,8 +3,8 @@
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
- * @version   0.3.3
- * @date      2013-03-26
+ * @version   0.3.4
+ * @date      2013-04-10
  * @copyright (c) 2012-2013 Yu-Jie Lin
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
