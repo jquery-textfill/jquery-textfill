@@ -6,14 +6,14 @@ jQuery TextFill
 This jQuery plugin was created by Russ Painter around May 2009, beginning with a StackOverflow [question][soq]. In very early 2012, Yu-Jie Lin helped to move the project to GitHub with version 0.1 and obtained the clearly stated open source licensing from Russ.
 
 [soq]: http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
-[index]: http://jquery-textfill.github.com/jquery-textfill/index.html
+[index]: http://jquery-textfill.github.io/jquery-textfill/index.html
 
 Usage
 -----
 
 ```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://jquery-textfill.github.com/jquery-textfill/jquery.textfill.min.js"></script>
+<script src="http://jquery-textfill.github.io/jquery-textfill/jquery.textfill.min.js"></script>
 ```
 
 The code above uses minified version. By default options, you need to put text inside of `<span/>`:
@@ -91,7 +91,7 @@ Before you submit, make sure:
 * *Optional* Update [`README`](README.mkd) if necessary.
 * *Optional* Update [`CHANGES`](CHANGES.mkd) if worth mentioning.
 
-[tests]: http://jquery-textfill.github.com/jquery-textfill/tests.html
+[tests]: http://jquery-textfill.github.io/jquery-textfill/tests.html
 
 License
 -------

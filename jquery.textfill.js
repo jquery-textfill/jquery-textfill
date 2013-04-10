@@ -9,7 +9,7 @@
  * @copyright (c) 2009 Russ Painter
  * @license   MIT License
  * @homepage  https://github.com/jquery-textfill/jquery-textfill
- * @example   http://jquery-textfill.github.com/jquery-textfill/Example.htm
+ * @example   http://jquery-textfill.github.io/jquery-textfill/index.html
 */
 ; (function($) {
   /**
