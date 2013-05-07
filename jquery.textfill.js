@@ -29,7 +29,7 @@
       explicitWidth: null,
       explicitHeight: null
     };
-    var Opts = jQuery.extend(defaults, options);
+    var Opts = $.extend(defaults, options);
 
     function _debug() {
       if (!Opts.debug
@@ -126,4 +126,4 @@
 
     return this;
   };
-})(jQuery);
+})(window.jQuery);
