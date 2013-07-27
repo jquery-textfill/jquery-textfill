@@ -42,14 +42,17 @@ $(function(){
 
 ### Options
 
- * `debug`: output debug message to console. Default is false.
- * `minFontPixels`: minimal font size. Default is 4.
- * `maxFontPixels`: sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate. Default is 40.
- * `innerTag`: the element tag to resize, select by `$(innerTag + ':visible:first', container)`, Default `innerTag` is `span`.
- * `callback`: callback when each element's (`innerTag`) font size is resized.
- * `complete`: callback when all elements are done.
- * `widthOnly`: only resizing for width restraint, this is intentionally used with CSS `white-space: nowrap` for header tags.
- * `explicitWidth` and `explicitHeight`: explicit dimension.
+Name | Description | Dafault
+--- | --- | ---
+`debug` | output debug message to console | `false`
+`minFontPixels` | minimal font size | 4
+`maxFontPixels` | sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate | 40
+`innerTag` | the element tag to resize, select by `$(innerTag + ':visible:first', container)` | `span`
+`callback` | callback when each element's (`innerTag`) font size is resized
+`complete` | callback when all elements are done
+`widthOnly` | only resizing for width restraint, this is intentionally used with CSS `white-space: nowrap` for header tags
+`explicitWidth` | explicit width
+`explicitHeight` | explicit height
 
 Help and Support
 ----------------
