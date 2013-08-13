@@ -119,6 +119,66 @@ test('minFontPixels too big to fit in', function () {
 });
 
 
+/*************/
+/* callbacks */
+/*************/
+
+test('resized callback', 1, function() {
+  setup({
+    div: {
+      id: JTF,
+      width: 285,
+      height: 210
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  var $span = $jtf.find('span');
+  $jtf.textfill({
+    debug: true,
+    maxFontPixels: 0,
+    callback: function(e) {
+      equal(e, $jtf[0]);
+    }
+  });
+});
+
+
+test('complete callback', 2, function() {
+  setup({
+    div: {
+      id: JTF,
+      width: 285,
+      height: 210
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  $jtf.textfill({
+    debug: true,
+    maxFontPixels: 0,
+    callback: function(e) {
+      equal(e, $jtf[0]);
+    },
+    complete: function(e) {
+      equal(e, $jtf);
+    }
+  });
+});
+
+
 /****************/
 /* debug option */
 /****************/
