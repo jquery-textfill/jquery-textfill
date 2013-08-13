@@ -42,7 +42,7 @@ $(function(){
 
 ### Options
 
-Name | Description | Dafault
+Name | Description | Default
 --- | --- | ---
 `debug` | output debug message to console | `false`
 `minFontPixels` | minimal font size | 4
