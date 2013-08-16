@@ -24,7 +24,8 @@
       minFontPixels: 4,
       innerTag: 'span',
       widthOnly: false,
-      callback: null,         // callback when a resizing is done
+      success: null,          // callback when a resizing is done
+      callback: null,         // callback when a resizing is done (deprecated, use success)
       fail: null,             // callback when a resizing is failed
       complete: null,         // callback when all is done
       explicitWidth: null,
@@ -40,6 +41,15 @@
       }
 
       console.debug.apply(console, arguments);
+    }
+
+    function _warn() {
+      if (typeof console == 'undefined'
+      ||  typeof console.warn == 'undefined') {
+        return;
+      }
+
+      console.warn.apply(console, arguments);
     }
 
     function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
@@ -120,7 +130,10 @@
         if (Opts.fail) {
           Opts.fail(this);
         }
+      } else if (Opts.success) {
+        Opts.success(this);
       } else if (Opts.callback) {
+        _warn('callback is deprecated, use success, instead');
         // call callback on each result
         Opts.callback(this);
       }

@@ -123,7 +123,34 @@ test('minFontPixels too big to fit in', function () {
 /* callbacks */
 /*************/
 
-test('resized callback', 1, function() {
+test('success callback', 1, function() {
+  setup({
+    div: {
+      id: JTF,
+      width: 285,
+      height: 210
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  var $span = $jtf.find('span');
+  $jtf.textfill({
+    debug: true,
+    maxFontPixels: 0,
+    success: function(e) {
+      equal(e, $jtf[0]);
+    }
+  });
+});
+
+
+test('callback callback (deprecated)', 1, function() {
   setup({
     div: {
       id: JTF,
