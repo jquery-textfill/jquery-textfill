@@ -125,7 +125,9 @@
       }
       _debug('Final: ' + ourText.css('font-size'));
 
-      if (ourText.width() > maxWidth || ourText.height() > maxHeight) {
+      if (ourText.width()  > maxWidth 
+      || (ourText.height() > maxHeight && !Opts.widthOnly)
+      ) {
         ourText.css('font-size', oldFontSize);
         if (Opts.fail) {
           Opts.fail(this);

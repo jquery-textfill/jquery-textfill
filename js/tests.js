@@ -119,6 +119,65 @@ test('minFontPixels too big to fit in', function () {
 });
 
 
+test('minFontPixels too big to fit in, but widthOnly = True and width fits', function () {
+  // @ fontSize = 60 => H > 10, W = 100
+  setup({
+    div: {
+      id: JTF,
+      // just enough to fit in with minFontPixels
+      width: 100,
+      // H is busted, but widthOnly = True, so ignored
+      height: 10
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+        'font-size': '20px',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  var $span = $jtf.find('span');
+  $jtf.textfill({
+    debug: true,
+    minFontPixels: 20,
+    maxFontPixels: 100,
+    widthOnly: true
+  });
+  equal($span.css('font-size'), '60px');
+});
+
+
+test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', function () {
+  setup({
+    div: {
+      id: JTF,
+      width: 10,
+      height: 10
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+        'font-size': '20px',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  var $span = $jtf.find('span');
+  $jtf.textfill({
+    debug: true,
+    minFontPixels: 20,
+    maxFontPixels: 100,
+    widthOnly: true
+  });
+  equal($span.css('font-size'), '20px');
+});
+
+
 /*************/
 /* callbacks */
 /*************/

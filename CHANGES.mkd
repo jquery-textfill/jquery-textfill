@@ -10,6 +10,9 @@ CHANGES
 * add tests for callbacks
 * add `fail` callback (#15)
 * deprecate `callback` callback with `success` callback
+* fix `widthOnly` option (#4)
+
+    Height will not cause failure when `widthOnly` is set as long as width can fit into the container.
 
 ## Version 0.3.5 (2013-05-08T00:40:22Z)
 
