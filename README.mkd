@@ -49,6 +49,7 @@ Name | Description | Default
 `maxFontPixels` | sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate | 40
 `innerTag` | the element tag to resize, select by `$(innerTag + ':visible:first', container)` | `span`
 `callback` | callback when each element's (`innerTag`) font size is resized
+`fail` | callback when a resizing is failed
 `complete` | callback when all elements are done
 `widthOnly` | only resizing for width restraint, this is intentionally used with CSS `white-space: nowrap` for header tags
 `explicitWidth` | explicit width

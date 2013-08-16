@@ -24,8 +24,9 @@
       minFontPixels: 4,
       innerTag: 'span',
       widthOnly: false,
-      callback: null,
-      complete: null,
+      callback: null,         // callback when a resizing is done
+      fail: null,             // callback when a resizing is failed
+      complete: null,         // callback when all is done
       explicitWidth: null,
       explicitHeight: null
     };
@@ -116,9 +117,13 @@
 
       if (ourText.width() > maxWidth || ourText.height() > maxHeight) {
         ourText.css('font-size', oldFontSize);
+        if (Opts.fail) {
+          Opts.fail(this);
+        }
+      } else if (Opts.callback) {
+        // call callback on each result
+        Opts.callback(this);
       }
-      // call callback on each result
-      if (Opts.callback) Opts.callback(this);
     });
 
     // call complete when all is complete

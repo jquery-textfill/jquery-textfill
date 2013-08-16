@@ -150,6 +150,35 @@ test('resized callback', 1, function() {
 });
 
 
+test('fail callback', 1, function () {
+  setup({
+    div: {
+      id: JTF,
+      width: 40,
+      height: 40
+    },
+    span: {
+      css: {
+        'font-family': 'VT323',
+        'font-size': '20px',
+      },
+      text: 'test'
+    }
+  });
+
+  var $jtf = $('#' + JTF);
+  var $span = $jtf.find('span');
+  $jtf.textfill({
+    debug: true,
+    minFontPixels: 100,
+    maxFontPixels: 0,
+    fail: function(e) {
+      equal(e, $jtf[0]);
+    }
+  });
+});
+
+
 test('complete callback', 2, function() {
   setup({
     div: {
