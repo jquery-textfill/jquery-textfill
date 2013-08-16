@@ -7,6 +7,8 @@ CHANGES
 
 ## Development
 
+## Version 0.4.0 (2013-08-16T17:17:02Z)
+
 * add tests for callbacks
 * add `fail` callback (#15)
 * deprecate `callback` callback with `success` callback
