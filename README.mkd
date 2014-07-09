@@ -51,9 +51,11 @@ Name | Description | Default
 `success` | callback when a resizing is successful
 `fail` | callback when a resizing is failed
 `complete` | callback when all elements are done
-`widthOnly` | only resizing for width restraint; to be used in conjunction with CSS `white-space: nowrap` applied to the container tag
+`widthOnly` | only resizing for width restraint
 `explicitWidth` | explicit width
 `explicitHeight` | explicit height
+
+**Notice:** using `widthOnly` property would automatically add a `white-space: nowrap` to the resized element.
 
 Help and Support
 ----------------

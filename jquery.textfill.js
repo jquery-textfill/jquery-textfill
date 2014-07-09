@@ -119,13 +119,16 @@
       var WfontSize = _sizing('W', ourText, $.fn.width, maxWidth, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 
       if (Opts.widthOnly) {
-        ourText.css('font-size', WfontSize);
+        ourText.css({
+            'font-size': WfontSize,
+            'white-space': 'nowrap'
+        });
       } else {
         ourText.css('font-size', Math.min(HfontSize, WfontSize));
       }
       _debug('Final: ' + ourText.css('font-size'));
 
-      if (ourText.width()  > maxWidth 
+      if (ourText.width()  > maxWidth
       || (ourText.height() > maxHeight && !Opts.widthOnly)
       ) {
         ourText.css('font-size', oldFontSize);
