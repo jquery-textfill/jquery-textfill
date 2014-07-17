@@ -1,108 +1,127 @@
-jQuery TextFill
-===============
+# jQuery TextFill
 
-**[jQuery TextFill][index]** resizes text to fit into a container and makes font size as big as possible.
+This jQuery plugin resizes text to make it fit into a container. The font size
+gets as big as possible. <br />
+[Live demo here][index].
 
-This jQuery plugin was created by Russ Painter around May 2009, beginning with a StackOverflow [question][soq]. In very early 2012, Yu-Jie Lin helped to move the project to GitHub with version 0.1 and obtained the clearly stated open source licensing from Russ.
+[index]: http://jquery-textfill.github.io/
 
-[soq]: http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
-[index]: http://jquery-textfill.github.io/jquery-textfill/index.html
+## Usage
 
-Usage
------
+- Remember to include _jQuery_ and _jQuery TextFill_:
 
 ```html
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://jquery-textfill.github.io/jquery-textfill/jquery.textfill.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="jquery.textfill.min.js"></script>
 ```
 
-The code above uses minified version. By default options, you need to put text inside of `<span/>`:
+- Select which element you'll use. Make sure to:
+  - Specify the parent's width and height
+  - Put the text inside of a `<span/>` child by default (see _Options_ to change this)
 
 ```html
-<div class='textfill' style='width:100px;height:50px;'>
+<div id='my-element' style='width:100px;height:50px;'>
   <span>The quick brown fox jumps over the lazy dog</span>
 </div>
 ```
 
-### Initialization
+- Initialize _jQuery TextFill_
 
 ```js
-$(selector).textfill(options);
+$('#my-element').textfill({
+    ...options...
+});
 ```
+
+## Options
+
+| Name              | Description | Default Value |
+| ----------------- | ----------- | ------------- |
+| `minFontPixels`   | Minimal font size (in pixels) | 4 |
+| `maxFontPixels`   | Maximum font size the text _could_ resize (in pixels). For `size <= 0`, the text is sized to as big as the container can accommodate. | 40 |
+| `innerTag`        | The child element tag to resize. Select by `$(innerTag + ':visible:first', container)` | `span` |
+| `widthOnly`       | only resizing for width restraint | `false` |
+| `explicitWidth`   | explicit width | `null` |
+| `explicitHeight`  | explicit height | `null` |
+| `debug`           | Output debugging messages to console | `false` |
 
 For example,
 
 ```html
 <script>
-$(function(){
-  $('.textfill').textfill({ maxFontPixels: 36 });
+$(function() {
+    $('#my-element').textfill({
+        maxFontPixels: 36
+    });
 });
 </script>
 ```
 
-### Options
+## Callbacks
 
-Name | Description | Default
---- | --- | ---
-`debug` | output debug message to console | `false`
-`minFontPixels` | minimal font size | 4
-`maxFontPixels` | sizing up the text as big as possible to this setting. For *size <= 0*, the text is sized to as big as the container can accommodate | 40
-`innerTag` | the element tag to resize, select by `$(innerTag + ':visible:first', container)` | `span`
-`success` | callback when a resizing is successful
-`fail` | callback when a resizing is failed
-`complete` | callback when all elements are done
-`widthOnly` | only resizing for width restraint
-`explicitWidth` | explicit width
-`explicitHeight` | explicit height
+| Name       | Called when...                       | Default Value |
+| ---------- | ------------------------------------ | ------------- |
+| `success`  | Called when a resizing is successful | `null`        |
+| `fail`     | Called when a resizing is failed     | `null`        |
+| `complete` | Called when all elements are done    | `null`        |
 
-**Notice:** using `widthOnly` property would automatically add a `white-space: nowrap` to the resized element.
+For example,
 
-Help and Support
-----------------
+```html
+<script>
+$(function() {
+    $('#my-element').textfill({
+        success: function() {
+		    console.log("yay!")
+		},
+		fail: function() {
+		    alert("boo hoo!")
+		}
+    });
+});
+</script>
+```
 
-### Reporting bug
+## Contributing
 
-When report a bug, please reproduce the bug using [Gist][] or [jsFiddle][] as a template. Environment can be different and some may be fine, some may be not. **Please make sure you can clearly demonstrate the bug** unless the bug is super easy to spot like `a < b` should be `a <= b`.
+You are very welcome to contribute!
+[A good number of people did](https://github.com/jquery-textfill/jquery-textfill/graphs/contributors),
+so feel free to help no matter how small the changes might be.
 
-When reproduce a bug, it's important that CSS matches the page where you encounter the bug, it could be crucial that container's and innertag's styles have to be exactly the same.
+Just _make sure_ to read the file [`CONTRIBUTING.md`](CONTRIBUTING.md) first.
+There we make a quick take on how you could help us.
 
-Please also provide enough information about your system and browser, if necessary, here is a template:
+Also, there we lay down our rules for _reporting issues_ and _making pull
+requests_. Gotcha! Now you can't say we didn't told you about it!
 
-    TextFill version:
-    jQuery version:
-    Font family:
-    OS/Version:
-    Browser/Version:
+If you found something critical or just want to make a suggestion
+[open an issue][issue] and start typing right away.
 
-Since TextFill 0.3.1, there is debugging option, can be enabled by `debug: true`, you can also include those messages.
+[issue]: https://github.com/jquery-textfill/jquery-textfill/issues
 
-[Gist]: https://gist.github.com/4650697
-[jsFiddle]: http://jsfiddle.net/livibetter/3gMFG/
+## Credits
 
-*If you can not provide a bug reprouction, then please do not report*, I could not fix something I can't see.
+This jQuery plugin was created by [Russ Painter][russ] around May 2009,
+beginning with a StackOverflow [question][soq].
 
-### Contributing
+In very early 2012, [Yu-Jie Lin][yu] helped to move the project to GitHub with
+version _0.1_ and obtained the clearly stated open source licensing from Russ.
 
-You are very welcome to contribute whatever you can, but **please do not**:
+Around July 2014 [Alexandre Dantas][alex] was made a contributor, currently
+maintaining the project.
 
-* Update version number.
-* Generate minified file.
+[soq]:  http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
+[russ]: https://github.com/GeekyMonkey
+[yu]:   https://github.com/livibetter
+[alex]: https://github.com/alexdantas
 
-These tasks are for releasing, contributors should not take on them.
+## License
 
-Before you submit, make sure:
+`jquery-textfill` is licensed under the _MIT License_. See file
+[`COPYING.md`](COPYING.md) to see what you can and cannot do with the
+source.
 
-* Coding style generally matches.
-* Pass all [tests][] previously have passed.
-* *Optional* Update [`README`](README.mkd) if necessary.
-* *Optional* Update [`CHANGES`](CHANGES.mkd) if worth mentioning.
-
-[tests]: http://jquery-textfill.github.io/jquery-textfill/tests.html
-
-License
--------
-
-It is licensed under the MIT License, see [`COPYING`](COPYING) file.
-
+    Copyright (c) 2014 Alexandre Dantas
     Copyright (c) 2012-2013 Yu-Jie Lin
     Copyright (c) 2009 Russ Painter
+
