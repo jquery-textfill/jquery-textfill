@@ -7,6 +7,10 @@ CHANGES
 
 ## Development
 
+## Version 0.5.0 (2014-07-17T15:37:15Z)
+
+ * made option `widthOnly` imply 'whitespace:nowrap'
+
 ## Version 0.4.0 (2013-08-16T17:17:02Z)
 
 * add tests for callbacks
