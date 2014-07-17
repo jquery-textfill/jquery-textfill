@@ -16,14 +16,14 @@
     "jquery": "*"
   },
 
-  "description": "Resizing text to fit into container.",
+  "description": "Resizes text to fit into container.",
   "keywords": [
     "resize",
     "text"
   ],
   "homepage": "https://github.com/jquery-textfill/jquery-textfill",
   "docs": "https://github.com/jquery-textfill/jquery-textfill",
-  "demo": "http://jquery-textfill.github.io/jquery-textfill/index.html",
+  "demo": "http://jquery-textfill.github.io/",
   "bugs": "https://github.com/jquery-textfill/jquery-textfill/issues",
   "maintainers": [
     {
