@@ -1,7 +1,7 @@
 {
 	"name"        : "jquery-textfill",
 	"description" : "Resizes text to fit into a container",
-	"version"     : "0.5.0",
+	"version"     : "0.5.1",
 	"keywords"    : [
 		"jquery", "text", "resize", "container", "font"
 	],
