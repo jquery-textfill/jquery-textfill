@@ -1,0 +1,25 @@
+{
+	"name"        : "jquery-textfill",
+	"description" : "Resizes text to fit into a container",
+	"version"     : "0.5.0",
+	"keywords"    : [
+		"jquery", "text", "resize", "container", "font"
+	],
+
+	"main": "source/jquery.textfill.js",
+
+	"homepage" : "https://github.com/jquery-textfill/jquery-textfill",
+	"authors": [
+		{ "name": "Russ Painter" },
+		{ "name": "Yu-Jie Lin" },
+		{ "name": "Alexandre Dantas", "email": "eu@alexdantas.net"," homepage": "http://alexdantas.net" }
+	],
+
+	"license": "MIT",
+	"dependencies": {
+		"jquery": ">=1.6"
+	},
+	"devDependencies": {
+		"qunit": ">=1.11"
+	}
+}
