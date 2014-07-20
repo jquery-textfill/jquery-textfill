@@ -1,5 +1,10 @@
-var JTF = 'jtf';
+/*global QUnit,$*/
 
+/**
+ * Unit Tests for jQuery TextFill.
+ */
+
+var JTF = 'jtf';
 
 function setup(opts) {
   var $t = $('#qunit-fixture');
@@ -7,8 +12,11 @@ function setup(opts) {
   var $s = $('<span/>', opts.span).appendTo($d);
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Basic Tests
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-test('capped at 10px', function () {
+QUnit.test('capped at 10px', function () {
   setup({
     div: {
       id: JTF,
@@ -30,7 +38,7 @@ test('capped at 10px', function () {
 });
 
 
-test('size up to max', function () {
+QUnit.test('size up to max', function () {
   setup({
     div: {
       id: JTF,
@@ -52,7 +60,7 @@ test('size up to max', function () {
 });
 
 
-test('width be maxWidth', function () {
+QUnit.test('width be maxWidth', function () {
   setup({
     div: {
       id: JTF,
@@ -74,7 +82,7 @@ test('width be maxWidth', function () {
 });
 
 
-test('height be maxHeight', function () {
+QUnit.test('height be maxHeight', function () {
   setup({
     div: {
       id: JTF,
@@ -96,7 +104,7 @@ test('height be maxHeight', function () {
 });
 
 
-test('minFontPixels too big to fit in', function () {
+QUnit.test('minFontPixels too big to fit in', function () {
   setup({
     div: {
       id: JTF,
@@ -119,7 +127,7 @@ test('minFontPixels too big to fit in', function () {
 });
 
 
-test('minFontPixels too big to fit in, but widthOnly = True and width fits', function () {
+QUnit.test('minFontPixels too big to fit in, but widthOnly = True and width fits', function () {
   // @ fontSize = 60 => H > 10, W = 100
   setup({
     div: {
@@ -150,7 +158,7 @@ test('minFontPixels too big to fit in, but widthOnly = True and width fits', fun
 });
 
 
-test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', function () {
+QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', function () {
   setup({
     div: {
       id: JTF,
@@ -178,11 +186,11 @@ test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', fu
 });
 
 
-/*************/
-/* callbacks */
-/*************/
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Callbacks
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-test('success callback', 1, function() {
+QUnit.test('success callback', 1, function() {
   setup({
     div: {
       id: JTF,
@@ -209,7 +217,7 @@ test('success callback', 1, function() {
 });
 
 
-test('callback callback (deprecated)', 1, function() {
+QUnit.test('callback callback (deprecated)', 1, function() {
   setup({
     div: {
       id: JTF,
@@ -236,7 +244,7 @@ test('callback callback (deprecated)', 1, function() {
 });
 
 
-test('fail callback', 1, function () {
+QUnit.test('fail callback', 1, function () {
   setup({
     div: {
       id: JTF,
@@ -265,7 +273,7 @@ test('fail callback', 1, function () {
 });
 
 
-test('complete callback', 2, function() {
+QUnit.test('complete callback', 2, function() {
   setup({
     div: {
       id: JTF,
@@ -294,11 +302,11 @@ test('complete callback', 2, function() {
 });
 
 
-/****************/
-/* debug option */
-/****************/
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * "Debug" option
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-module('debug option', {
+QUnit.module('debug option', {
   setup: function () {
     if (console.debug_original) {
       throw 'console.debug_original already has value.';
@@ -307,7 +315,7 @@ module('debug option', {
     console.debug_called = false;
     console.debug = function () {
       console.debug_called = true;
-    }
+    };
   },
   teardown: function () {
     if (!console.debug_original) {
@@ -320,7 +328,7 @@ module('debug option', {
 });
 
 
-test('debug used', function () {
+QUnit.test('debug used', function () {
   setup({
     div: {
       id: JTF,
@@ -341,7 +349,7 @@ test('debug used', function () {
 });
 
 
-test('debug not used', function () {
+QUnit.test('debug not used', function () {
   setup({
     div: {
       id: JTF,

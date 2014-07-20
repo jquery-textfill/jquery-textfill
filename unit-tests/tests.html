@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8"/>
-  <title>Tests of jQuery Plugin: Text Fill</title>
-  <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'/>
-  <link href='http://code.jquery.com/qunit/qunit-1.11.0.css' rel='stylesheet' type='text/css'/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script src='http://code.jquery.com/qunit/qunit-1.11.0.js'></script>
-  <script src='../source/jquery.textfill.js'></script>
-  <script src='tests.js'></script>
-</head>
-<body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-</body>
+  <head>
+    <meta charset="utf-8"/>
+    <!-- This file is the placeholder for all the Unit Tests we use
+       - to make sure jQuery TextFill works alright.
+       - We use the QUnit unit test framework.
+       -
+       - To actually see the Unit Tests, open `tests.js`.
+       -->
+	<title>Tests for jQuery Plugin: Text Fill</title>
+
+	<!-- We need this font because is easy to measure it's pixels -->
+	<link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'/>
+	<link href='http://code.jquery.com/qunit/qunit-1.11.0.css' rel='stylesheet' type='text/css'/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src='http://code.jquery.com/qunit/qunit-1.11.0.js'></script>
+
+	<script src='../source/jquery.textfill.js'></script>
+	<!-- Now, this is the file that actually contains the unit tests -->
+	<script src='tests.js'></script>
+  </head>
+  <body>
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+  </body>
 </html>
