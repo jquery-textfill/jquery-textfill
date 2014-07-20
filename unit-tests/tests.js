@@ -16,7 +16,7 @@ function setup(opts) {
  * Basic Tests
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-QUnit.test('capped at 10px', function () {
+QUnit.test('capped at 10px', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -34,11 +34,11 @@ QUnit.test('capped at 10px', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, maxFontPixels: 10});
-  equal($span.css('font-size'), '10px');
+  assert.equal($span.css('font-size'), '10px');
 });
 
 
-QUnit.test('size up to max', function () {
+QUnit.test('size up to max', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -56,11 +56,11 @@ QUnit.test('size up to max', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, maxFontPixels: 0});
-  equal($span.css('font-size'), '172px');
+  assert.equal($span.css('font-size'), '172px');
 });
 
 
-QUnit.test('width be maxWidth', function () {
+QUnit.test('width be maxWidth', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -78,11 +78,11 @@ QUnit.test('width be maxWidth', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, maxFontPixels: 0});
-  equal($span.css('font-size'), '119px');
+  assert.equal($span.css('font-size'), '119px');
 });
 
 
-QUnit.test('height be maxHeight', function () {
+QUnit.test('height be maxHeight', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -100,11 +100,11 @@ QUnit.test('height be maxHeight', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, maxFontPixels: 0});
-  equal($span.css('font-size'), '158px');
+  assert.equal($span.css('font-size'), '158px');
 });
 
 
-QUnit.test('minFontPixels too big to fit in', function () {
+QUnit.test('minFontPixels too big to fit in', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -123,11 +123,11 @@ QUnit.test('minFontPixels too big to fit in', function () {
   var $jtf = $('#' + JTF);
   var $span = $jtf.find('span');
   $jtf.textfill({debug: true, minFontPixels: 100, maxFontPixels: 0});
-  equal($span.css('font-size'), '20px');
+  assert.equal($span.css('font-size'), '20px');
 });
 
 
-QUnit.test('minFontPixels too big to fit in, but widthOnly = True and width fits', function () {
+QUnit.test('minFontPixels too big to fit in, but widthOnly = True and width fits', function (assert) {
   // @ fontSize = 60 => H > 10, W = 100
   setup({
     div: {
@@ -154,11 +154,11 @@ QUnit.test('minFontPixels too big to fit in, but widthOnly = True and width fits
     maxFontPixels: 100,
     widthOnly: true
   });
-  equal($span.css('font-size'), '60px');
+  assert.equal($span.css('font-size'), '60px');
 });
 
 
-QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', function () {
+QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = True', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -182,7 +182,7 @@ QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = Tru
     maxFontPixels: 100,
     widthOnly: true
   });
-  equal($span.css('font-size'), '20px');
+  assert.equal($span.css('font-size'), '20px');
 });
 
 
@@ -190,7 +190,7 @@ QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = Tru
  * Callbacks
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-QUnit.test('success callback', 1, function() {
+QUnit.test('success callback', 1, function(assert) {
   setup({
     div: {
       id: JTF,
@@ -211,13 +211,13 @@ QUnit.test('success callback', 1, function() {
     debug: true,
     maxFontPixels: 0,
     success: function(e) {
-      equal(e, $jtf[0]);
+      assert.equal(e, $jtf[0]);
     }
   });
 });
 
 
-QUnit.test('callback callback (deprecated)', 1, function() {
+QUnit.test('callback callback (deprecated)', 1, function(assert) {
   setup({
     div: {
       id: JTF,
@@ -238,13 +238,13 @@ QUnit.test('callback callback (deprecated)', 1, function() {
     debug: true,
     maxFontPixels: 0,
     callback: function(e) {
-      equal(e, $jtf[0]);
+      assert.equal(e, $jtf[0]);
     }
   });
 });
 
 
-QUnit.test('fail callback', 1, function () {
+QUnit.test('fail callback', 1, function (assert) {
   setup({
     div: {
       id: JTF,
@@ -267,13 +267,13 @@ QUnit.test('fail callback', 1, function () {
     minFontPixels: 100,
     maxFontPixels: 0,
     fail: function(e) {
-      equal(e, $jtf[0]);
+      assert.equal(e, $jtf[0]);
     }
   });
 });
 
 
-QUnit.test('complete callback', 2, function() {
+QUnit.test('complete callback', 2, function(assert) {
   setup({
     div: {
       id: JTF,
@@ -293,10 +293,10 @@ QUnit.test('complete callback', 2, function() {
     debug: true,
     maxFontPixels: 0,
     callback: function(e) {
-      equal(e, $jtf[0]);
+      assert.equal(e, $jtf[0]);
     },
     complete: function(e) {
-      equal(e, $jtf);
+      assert.equal(e, $jtf);
     }
   });
 });
@@ -328,7 +328,7 @@ QUnit.module('debug option', {
 });
 
 
-QUnit.test('debug used', function () {
+QUnit.test('debug used', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -345,11 +345,11 @@ QUnit.test('debug used', function () {
 
   var $jtf = $('#' + JTF);
   $jtf.textfill({debug: true, maxFontPixels: 10});
-  equal(console.debug_called, true);
+  assert.equal(console.debug_called, true);
 });
 
 
-QUnit.test('debug not used', function () {
+QUnit.test('debug not used', function (assert) {
   setup({
     div: {
       id: JTF,
@@ -366,7 +366,6 @@ QUnit.test('debug not used', function () {
 
   var $jtf = $('#' + JTF);
   $jtf.textfill({debug: false, maxFontPixels: 10});
-  equal(console.debug_called, false);
+  assert.equal(console.debug_called, false);
 });
-
 
