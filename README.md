@@ -35,15 +35,20 @@ $('#my-element').textfill({
 
 ## Options
 
+Remember, **container** means the _parent_ element, while **child** is the
+element that will _resize_. On the example above, the parent was the `div` and the
+child was the `span`.
+
 | Name              | Description | Default Value |
 | ----------------- | ----------- | ------------- |
-| `minFontPixels`   | Minimal font size (in pixels) | 4 |
-| `maxFontPixels`   | Maximum font size the text _could_ resize (in pixels). For `size <= 0`, the text is sized to as big as the container can accommodate. | 40 |
-| `innerTag`        | The child element tag to resize. Select by `$(innerTag + ':visible:first', container)` | `span` |
-| `widthOnly`       | only resizing for width restraint | `false` |
-| `explicitWidth`   | explicit width | `null` |
-| `explicitHeight`  | explicit height | `null` |
-| `debug`           | Output debugging messages to console | `false` |
+| `minFontPixels`   | Minimal font size (in pixels). The text will shrink up to this value. | 4 |
+| `maxFontPixels`   | Maximum font size (in pixels). The text will stretch up to this value.. If it's a negative value (`size <= 0`), the text will stretch to as big as the container can accommodate. | 40 |
+| `innerTag`        | The child element tag to resize. We select it by using `$(innerTag + ':visible:first', container)` | `span` |
+| `widthOnly`       | Will only resize for the width restraint | `false` |
+| `explicitWidth`   | Explicit width to resize. Defaults to the container's width. | `null` |
+| `explicitHeight`  | Explicit height to resize. Defaults to the container's height. | `null` |
+| `changeLineHeight`  | Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
+| `debug`           | Output debugging messages to console. | `false` |
 
 For example,
 
