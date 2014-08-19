@@ -18,25 +18,28 @@
 	 * @return All outer elements processed
 	 */
 	$.fn.textfill = function(options) {
+
 		var defaults = {
-			debug: false,
-			maxFontPixels: 40,
-			minFontPixels: 4,
-			innerTag: 'span',
-			widthOnly: false,
-			success: null,          // callback when a resizing is done
-			callback: null,         // callback when a resizing is done (deprecated, use success)
-			fail: null,             // callback when a resizing is failed
-			complete: null,         // callback when all is done
-			explicitWidth: null,
-			explicitHeight: null,
-			changeLineHeight: false
+			debug            : false,
+			maxFontPixels    : 40,
+			minFontPixels    : 4,
+			innerTag         : 'span',
+			widthOnly        : false,
+			success          : null, // callback when a resizing is done
+			callback         : null, // callback when a resizing is done (deprecated, use success)
+			fail             : null, // callback when a resizing is failed
+			complete         : null, // callback when all is done
+			explicitWidth    : null,
+			explicitHeight   : null,
+			changeLineHeight : false
 		};
+
 		var Opts = $.extend(defaults, options);
 
 		function _debug() {
+
 			if (!Opts.debug
-				||  typeof console == 'undefined'
+				||  typeof console       == 'undefined'
 				||  typeof console.debug == 'undefined') {
 				return;
 			}
@@ -45,8 +48,8 @@
 		}
 
 		function _warn() {
-			if (typeof console == 'undefined'
-				||  typeof console.warn == 'undefined') {
+			if (typeof console      == 'undefined' ||
+				typeof console.warn == 'undefined') {
 				return;
 			}
 
@@ -54,11 +57,15 @@
 		}
 
 		function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
+
 			function _m(v1, v2) {
+
 				var marker = ' / ';
+
 				if (v1 > v2) {
 					marker = ' > ';
-				} else if (v1 == v2) {
+				}
+				else if (v1 == v2) {
 					marker = ' = ';
 				}
 				return marker;
@@ -75,16 +82,21 @@
 		}
 
 		function _sizing(prefix, ourText, func, max, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
+
 			_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+
 			while (minFontPixels < maxFontPixels - 1) {
+
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
 				ourText.css('font-size', fontSize);
+
 				if (func.call(ourText) <= max) {
 					minFontPixels = fontSize;
 					if (func.call(ourText) == max) {
 						break;
 					}
-				} else {
+				}
+				else {
 					maxFontPixels = fontSize;
 				}
 				_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
@@ -98,12 +110,14 @@
 		}
 
 		this.each(function() {
+
 			var ourText = $(Opts.innerTag + ':visible:first', this);
+
 			// Use explicit dimensions when specified
-			var maxHeight = Opts.explicitHeight || $(this).height();
-			var maxWidth = Opts.explicitWidth || $(this).width();
+			var maxHeight   = Opts.explicitHeight || $(this).height();
+			var maxWidth    = Opts.explicitWidth || $(this).width();
 			var oldFontSize = ourText.css('font-size');
-			var lineHeight = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
+			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
 			var fontSize;
 
 			_debug('Opts: ', Opts);
@@ -114,6 +128,7 @@
 
 			var minFontPixels = Opts.minFontPixels;
 			var maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
+
 			var HfontSize = undefined;
 			if (!Opts.widthOnly) {
 				HfontSize = _sizing('H', ourText, $.fn.height, maxHeight, maxHeight, maxWidth, minFontPixels, maxFontPixels);
@@ -121,35 +136,43 @@
 			var WfontSize = _sizing('W', ourText, $.fn.width, maxWidth, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 
 			if (Opts.widthOnly) {
+
 				ourText.css({
 					'font-size': WfontSize,
 					'white-space': 'nowrap'
 				});
+
 				if(Opts.changeLineHeight) {
 					ourText.parent().css('line-height', lineHeight * WfontSize + 'px');
 				}
-			} else {
+			}
+			else {
 				ourText.css('font-size', Math.min(HfontSize, WfontSize));
+
 				if(Opts.changeLineHeight) {
 					ourText.parent().css('line-height', (lineHeight * Math.min(HfontSize, WfontSize)) + 'px');
 				}
 			}
+
 			_debug('Final: ' + ourText.css('font-size'));
 
-			if (ourText.width()  > maxWidth
-				|| (ourText.height() > maxHeight && !Opts.widthOnly)
-			   ) {
-				   ourText.css('font-size', oldFontSize);
-				   if (Opts.fail) {
-					   Opts.fail(this);
-				   }
-			   } else if (Opts.success) {
-				   Opts.success(this);
-			   } else if (Opts.callback) {
-				   _warn('callback is deprecated, use success, instead');
-				   // call callback on each result
-				   Opts.callback(this);
-			   }
+			if ((ourText.width()  > maxWidth) ||
+				(ourText.height() > maxHeight && !Opts.widthOnly)) {
+
+				ourText.css('font-size', oldFontSize);
+				if (Opts.fail) {
+					Opts.fail(this);
+				}
+			}
+			else if (Opts.success) {
+				Opts.success(this);
+			}
+			else if (Opts.callback) {
+				_warn('callback is deprecated, use success, instead');
+
+				// call callback on each result
+				Opts.callback(this);
+			}
 		});
 
 		// call complete when all is complete
@@ -157,4 +180,6 @@
 
 		return this;
 	};
+
 })(window.jQuery);
+
