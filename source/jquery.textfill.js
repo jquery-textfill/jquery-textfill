@@ -16,11 +16,22 @@
 ; (function($) {
 
 	/**
-	 * Resizes an inner element's font so that the inner element completely fills the outer element.
-	 * @param {Object} Options which are maxFontPixels (default=40), innerTag (default='span')
+	 * Resizes an inner element's font so that the
+	 * inner element completely fills the outer element.
+	 *
+	 * @param {Object} options User options that take
+	 *                         higher precedence when
+	 *                         merging with the default ones.
+	 *
 	 * @return All outer elements processed
 	 */
 	$.fn.textfill = function(options) {
+
+		// ______  _______ _______ _______ _     _        _______ _______
+		// |     \ |______ |______ |_____| |     | |         |    |______
+		// |_____/ |______ |       |     | |_____| |_____    |    ______|
+        //
+		// Merging user options with the default values
 
 		var defaults = {
 			debug            : false,
@@ -38,6 +49,12 @@
 		};
 
 		var Opts = $.extend(defaults, options);
+
+		// _______ _     _ __   _ _______ _______ _____  _____  __   _ _______
+		// |______ |     | | \  | |          |      |   |     | | \  | |______
+		// |       |_____| |  \_| |_____     |    __|__ |_____| |  \_| ______|
+		//
+		// Predefining the awesomeness
 
 		// Output arguments to the Debug console
 		// if "Debug Mode" is enabled
@@ -86,15 +103,32 @@
 			);
 		}
 
-		// Actually does the text resizing,
-		// the core of the plugin.
-		//
-		// Returns the current size of the font
-		// after resizing, in pixels.
-		//
+		/**
+		 * Calculates which size the font can get resized,
+		 * according to constrains.
+		 *
+		 * @param {String} prefix Gets shown on the console before
+		 *                        all the arguments, if debug mode is on.
+		 * @param {Object} ourText The DOM element to resize,
+		 *                         that contains the text.
+		 * @param {function} func Function called on `ourText` that's
+		 *                        used to compare with `max`.
+		 * @param {number} max Maximum value, that gets compared with
+		 *                     `func` called on `ourText`.
+		 * @param {number} minFontPixels Minimum value the font can
+		 *                               get resized to (in pixels).
+		 * @param {number} maxFontPixels Maximum value the font can
+		 *                               get resized to (in pixels).
+		 *
+		 * @return Size (in pixels) that the font can be resized.
+		 */
 		function _sizing(prefix, ourText, func, max, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
 
-			_debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+			_debug_sizing(
+				prefix, ourText,
+				maxHeight, maxWidth,
+				minFontPixels, maxFontPixels
+			);
 
 			while (minFontPixels < maxFontPixels - 1) {
 
@@ -110,19 +144,33 @@
 				else
 					maxFontPixels = fontSize;
 
-				_debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+				_debug_sizing(
+					prefix, ourText,
+					maxHeight, maxWidth,
+					minFontPixels, maxFontPixels
+				);
 			}
 
 			ourText.css('font-size', maxFontPixels);
 
 			if (func.call(ourText) <= max) {
 				minFontPixels = maxFontPixels;
-				_debug_sizing(prefix + '* ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+
+				_debug_sizing(
+					prefix + '* ', ourText,
+					maxHeight, maxWidth,
+					minFontPixels, maxFontPixels
+				);
 			}
 			return minFontPixels;
 		}
 
-		// Let's get everything started!
+		// _______ _______ _______  ______ _______
+		// |______    |    |_____| |_____/    |
+		// ______|    |    |     | |    \_    |
+        //
+		// Let's get it started (yeah)!
+
 		_debug('[TextFill] Start Debug');
 
 		this.each(function() {
@@ -156,10 +204,14 @@
 								 maxHeight :
 								 Opts.maxFontPixels);
 
-			// Font size after resizing, taking only in
-			// consideration the Height
+
+			// Let's start it all!
+
+			// 1. Calculate which `font-size` would
+			//    be best for the Height
 			var fontSizeHeight = undefined;
-			if (!Opts.widthOnly)
+
+			if (! Opts.widthOnly)
 				fontSizeHeight = _sizing(
 					'Height', ourText,
 					$.fn.height, maxHeight,
@@ -167,35 +219,42 @@
 					minFontPixels, maxFontPixels
 				);
 
-			// Font size after resizing, taking only in
-			// consideration the Width
-			var fontSizeWidth = _sizing(
+
+			// 2. Calculate which `font-size` would
+			//    be best for the Width
+			var fontSizeWidth = undefined;
+
+			fontSizeWidth = _sizing(
 				'Width', ourText,
 				$.fn.width, maxWidth,
 				maxHeight, maxWidth,
 				minFontPixels, maxFontPixels
 			);
 
-			if (Opts.widthOnly) {
+			// 3. Actually resize the text!
 
+			if (Opts.widthOnly) {
 				ourText.css({
 					'font-size'  : fontSizeWidth,
 					'white-space': 'nowrap'
 				});
 
-				if(Opts.changeLineHeight)
+				if (Opts.changeLineHeight)
 					ourText.parent().css(
 						'line-height',
 						(lineHeight * fontSizeWidth + 'px')
 					);
 			}
 			else {
-				ourText.css('font-size', Math.min(fontSizeHeight, fontSizeWidth));
+				var fontSizeFinal = Math.min(fontSizeHeight, fontSizeWidth);
 
-				if(Opts.changeLineHeight)
+				ourText.css('font-size', fontSizeFinal);
+
+				if (Opts.changeLineHeight)
 					ourText.parent().css(
 						'line-height',
-						(lineHeight * Math.min(fontSizeHeight, fontSizeWidth)) + 'px');
+						(lineHeight * fontSizeFinal) + 'px'
+					);
 			}
 
 			_debug(
