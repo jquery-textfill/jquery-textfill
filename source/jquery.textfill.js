@@ -39,25 +39,23 @@
 
 		var Opts = $.extend(defaults, options);
 
-		// Output arguments to the console if
-		// Debug mode is enabled
+		// Output arguments to the Debug console
+		// if "Debug Mode" is enabled
 		function _debug() {
-
 			if (!Opts.debug
 				||  typeof console       == 'undefined'
 				||  typeof console.debug == 'undefined') {
 				return;
 			}
-
 			console.debug.apply(console, arguments);
 		}
 
+		// Output arguments to the Warning console
 		function _warn() {
 			if (typeof console      == 'undefined' ||
 				typeof console.warn == 'undefined') {
 				return;
 			}
-
 			console.warn.apply(console, arguments);
 		}
 
@@ -79,12 +77,12 @@
 			}
 
 			_debug(
-				prefix +
-					'font: ' + ourText.css('font-size') +
-					', H: ' + ourText.height() + _m(ourText.height(), maxHeight) + maxHeight +
-					', W: ' + ourText.width()  + _m(ourText.width() , maxWidth)  + maxWidth +
-					', minFontPixels: ' + minFontPixels +
-					', maxFontPixels: ' + maxFontPixels
+				'[TextFill] '  + prefix + ' { ' +
+				'font-size: ' + ourText.css('font-size') + ',' +
+				'Height: '    + ourText.height() + 'px ' + _m(ourText.height(), maxHeight) + maxHeight + 'px,' +
+				'Width: '     + ourText.width()  + _m(ourText.width() , maxWidth)  + maxWidth + ',' +
+				'minFontPixels: ' + minFontPixels + 'px, ' +
+				'maxFontPixels: ' + maxFontPixels + 'px }'
 			);
 		}
 
@@ -96,7 +94,7 @@
 		//
 		function _sizing(prefix, ourText, func, max, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
 
-			_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+			_debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 
 			while (minFontPixels < maxFontPixels - 1) {
 
@@ -112,7 +110,7 @@
 				else
 					maxFontPixels = fontSize;
 
-				_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+				_debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 			}
 
 			ourText.css('font-size', maxFontPixels);
@@ -124,39 +122,55 @@
 			return minFontPixels;
 		}
 
+		// Let's get everything started!
+		_debug('[TextFill] Start Debug');
+
 		this.each(function() {
 
+			// Contains the child element we will resize.
+			// $(this) means the parent container
 			var ourText = $(Opts.innerTag + ':visible:first', this);
 
+			// Will resize to this dimensions.
 			// Use explicit dimensions when specified
-			var maxHeight   = Opts.explicitHeight || $(this).height();
-			var maxWidth    = Opts.explicitWidth  || $(this).width();
-			var oldFontSize = ourText.css('font-size');
-			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
-			var fontSize;
+			var maxHeight = Opts.explicitHeight || $(this).height();
+			var maxWidth  = Opts.explicitWidth  || $(this).width();
 
-			_debug('Opts: ', Opts);
-			_debug('Vars:' +
-				   ' maxHeight: ' + maxHeight +
-				   ', maxWidth: ' + maxWidth
+			var oldFontSize = ourText.css('font-size');
+
+			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
+
+			_debug('[TextFill] Inner text: ' + ourText.text());
+			_debug('[TextFill] All options: ', Opts);
+			_debug('[TextFill] Maximum sizes: { ' +
+				   'Height: ' + maxHeight + 'px, ' +
+				   'Width: '  + maxWidth  + 'px' + ' }'
 				  );
 
 			var minFontPixels = Opts.minFontPixels;
+
+			// Remember, if this `maxFontPixels` is negative,
+			// the text will resize to as long as the container
+			// can accomodate
 			var maxFontPixels = (Opts.maxFontPixels <= 0 ?
 								 maxHeight :
 								 Opts.maxFontPixels);
 
-			var HfontSize = undefined;
+			// Font size after resizing, taking only in
+			// consideration the Height
+			var fontSizeHeight = undefined;
 			if (!Opts.widthOnly)
-				HfontSize = _sizing(
-					'H', ourText,
+				fontSizeHeight = _sizing(
+					'Height', ourText,
 					$.fn.height, maxHeight,
 					maxHeight, maxWidth,
 					minFontPixels, maxFontPixels
 				);
 
-			var WfontSize = _sizing(
-				'W', ourText,
+			// Font size after resizing, taking only in
+			// consideration the Width
+			var fontSizeWidth = _sizing(
+				'Width', ourText,
 				$.fn.width, maxWidth,
 				maxHeight, maxWidth,
 				minFontPixels, maxFontPixels
@@ -165,25 +179,33 @@
 			if (Opts.widthOnly) {
 
 				ourText.css({
-					'font-size'  : WfontSize,
+					'font-size'  : fontSizeWidth,
 					'white-space': 'nowrap'
 				});
 
 				if(Opts.changeLineHeight)
 					ourText.parent().css(
 						'line-height',
-						(lineHeight * WfontSize + 'px')
+						(lineHeight * fontSizeWidth + 'px')
 					);
 			}
 			else {
-				ourText.css('font-size', Math.min(HfontSize, WfontSize));
+				ourText.css('font-size', Math.min(fontSizeHeight, fontSizeWidth));
 
 				if(Opts.changeLineHeight)
-					ourText.parent().css('line-height', (lineHeight * Math.min(HfontSize, WfontSize)) + 'px');
+					ourText.parent().css(
+						'line-height',
+						(lineHeight * Math.min(fontSizeHeight, fontSizeWidth)) + 'px');
 			}
 
-			_debug('Final: ' + ourText.css('font-size'));
+			_debug(
+				'[TextFill] Finished { ' +
+				'Old font-size: ' + oldFontSize              + ', ' +
+				'New font-size: ' + ourText.css('font-size') + ' }'
+			);
 
+			// Oops, something wrong happened!
+			// We weren't supposed to exceed the original size
 			if ((ourText.width()  > maxWidth) ||
 				(ourText.height() > maxHeight && !Opts.widthOnly)) {
 
@@ -192,6 +214,14 @@
 				// Failure callback
 				if (Opts.fail)
 					Opts.fail(this);
+
+				_debug(
+					'[TextFill] Failure { ' +
+					'Current Width: '  + ourText.width()  + ', ' +
+					'Maximum Width: '  + maxWidth         + ', ' +
+					'Current Height: ' + ourText.height() + ', ' +
+					'Maximum Height: ' + maxHeight        + ' }'
+				);
 			}
 			else if (Opts.success) {
 				Opts.success(this);
@@ -208,6 +238,7 @@
 		if (Opts.complete)
 			Opts.complete(this);
 
+		_debug('[TextFill] End Debug');
 		return this;
 	};
 
