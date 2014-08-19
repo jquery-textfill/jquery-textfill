@@ -1,35 +1,36 @@
 {
-  "name": "textfill",
-  "version": "0.5.1",
-  "title": "jQuery TextFill",
-  "author": {
-    "name": "jQuery TextFill contributors",
-    "url": "https://github.com/jquery-textfill/jquery-textfill"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING"
-    }
-  ],
-  "dependencies": {
-    "jquery": "*"
-  },
+	"name": "textfill",
+	"version": "0.5.1",
+	"title": "jQuery TextFill",
+	"author": {
+		"name": "jQuery TextFill contributors",
+		"url": "https://github.com/jquery-textfill/jquery-textfill"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://github.com/jquery-textfill/jquery-textfill/blob/master/COPYING"
+		}
+	],
+	"dependencies": {
+		"jquery": "*"
+	},
 
-  "description": "Resizes text to fit into container.",
-  "keywords": [
-    "resize",
-    "text"
-  ],
-  "homepage": "https://github.com/jquery-textfill/jquery-textfill",
-  "docs": "https://github.com/jquery-textfill/jquery-textfill",
-  "demo": "http://jquery-textfill.github.io/",
-  "bugs": "https://github.com/jquery-textfill/jquery-textfill/issues",
-  "maintainers": [
-    {
-      "name": "Alexandre Dantas",
-      "email": "eu@alexdantas.net",
-      "url": "http://alexdantas.net/"
-    }
-  ]
+	"description": "Resizes text to fit into container.",
+	"keywords": [
+		"resize",
+		"text"
+	],
+	"homepage": "https://github.com/jquery-textfill/jquery-textfill",
+	"docs": "https://github.com/jquery-textfill/jquery-textfill",
+	"demo": "http://jquery-textfill.github.io/",
+	"bugs": "https://github.com/jquery-textfill/jquery-textfill/issues",
+	"maintainers": [
+		{
+			"name": "Alexandre Dantas",
+			"email": "eu@alexdantas.net",
+			"url": "http://alexdantas.net/"
+		}
+	]
 }
+
