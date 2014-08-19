@@ -36,6 +36,8 @@
 
 		var Opts = $.extend(defaults, options);
 
+		// Output arguments to the console if
+		// Debug mode is enabled
 		function _debug() {
 
 			if (!Opts.debug
@@ -62,12 +64,12 @@
 
 				var marker = ' / ';
 
-				if (v1 > v2) {
+				if (v1 > v2)
 					marker = ' > ';
-				}
-				else if (v1 == v2) {
+
+				else if (v1 == v2)
 					marker = ' = ';
-				}
+
 				return marker;
 			}
 
@@ -87,18 +89,18 @@
 
 			while (minFontPixels < maxFontPixels - 1) {
 
-				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2)
+				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
 
 				if (func.call(ourText) <= max) {
 					minFontPixels = fontSize;
-					if (func.call(ourText) == max) {
+
+					if (func.call(ourText) == max)
 						break;
-					}
 				}
-				else {
+				else
 					maxFontPixels = fontSize;
-				}
+
 				_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 			}
 			ourText.css('font-size', maxFontPixels);
@@ -115,7 +117,7 @@
 
 			// Use explicit dimensions when specified
 			var maxHeight   = Opts.explicitHeight || $(this).height();
-			var maxWidth    = Opts.explicitWidth || $(this).width();
+			var maxWidth    = Opts.explicitWidth  || $(this).width();
 			var oldFontSize = ourText.css('font-size');
 			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
 			var fontSize;
@@ -127,31 +129,31 @@
 				  );
 
 			var minFontPixels = Opts.minFontPixels;
-			var maxFontPixels = Opts.maxFontPixels <= 0 ? maxHeight : Opts.maxFontPixels;
+			var maxFontPixels = (Opts.maxFontPixels <= 0 ?
+								 maxHeight :
+								 Opts.maxFontPixels);
 
 			var HfontSize = undefined;
-			if (!Opts.widthOnly) {
+			if (!Opts.widthOnly)
 				HfontSize = _sizing('H', ourText, $.fn.height, maxHeight, maxHeight, maxWidth, minFontPixels, maxFontPixels);
-			}
+
 			var WfontSize = _sizing('W', ourText, $.fn.width, maxWidth, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 
 			if (Opts.widthOnly) {
 
 				ourText.css({
-					'font-size': WfontSize,
+					'font-size'  : WfontSize,
 					'white-space': 'nowrap'
 				});
 
-				if(Opts.changeLineHeight) {
+				if(Opts.changeLineHeight)
 					ourText.parent().css('line-height', lineHeight * WfontSize + 'px');
-				}
 			}
 			else {
 				ourText.css('font-size', Math.min(HfontSize, WfontSize));
 
-				if(Opts.changeLineHeight) {
+				if(Opts.changeLineHeight)
 					ourText.parent().css('line-height', (lineHeight * Math.min(HfontSize, WfontSize)) + 'px');
-				}
 			}
 
 			_debug('Final: ' + ourText.css('font-size'));
@@ -160,9 +162,10 @@
 				(ourText.height() > maxHeight && !Opts.widthOnly)) {
 
 				ourText.css('font-size', oldFontSize);
-				if (Opts.fail) {
+
+				// Failure callback
+				if (Opts.fail)
 					Opts.fail(this);
-				}
 			}
 			else if (Opts.success) {
 				Opts.success(this);
@@ -170,13 +173,14 @@
 			else if (Opts.callback) {
 				_warn('callback is deprecated, use success, instead');
 
-				// call callback on each result
+				// Success callback
 				Opts.callback(this);
 			}
 		});
 
-		// call complete when all is complete
-		if (Opts.complete) Opts.complete(this);
+		// Complete callback
+		if (Opts.complete)
+			Opts.complete(this);
 
 		return this;
 	};
