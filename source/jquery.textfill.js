@@ -29,7 +29,8 @@
       fail: null,             // callback when a resizing is failed
       complete: null,         // callback when all is done
       explicitWidth: null,
-      explicitHeight: null
+      explicitHeight: null,
+      changeLineHeight: false
     };
     var Opts = $.extend(defaults, options);
 
@@ -102,6 +103,7 @@
       var maxHeight = Opts.explicitHeight || $(this).height();
       var maxWidth = Opts.explicitWidth || $(this).width();
       var oldFontSize = ourText.css('font-size');
+      var lineHeight = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
       var fontSize;
 
       _debug('Opts: ', Opts);
@@ -123,8 +125,14 @@
             'font-size': WfontSize,
             'white-space': 'nowrap'
         });
+        if(Opts.changeLineHeight) {
+          ourText.parent().css('line-height', lineHeight * WfontSize + 'px');
+        }
       } else {
         ourText.css('font-size', Math.min(HfontSize, WfontSize));
+        if(Opts.changeLineHeight) {
+          ourText.parent().css('line-height', (lineHeight * Math.min(HfontSize, WfontSize)) + 'px');
+        }
       }
       _debug('Final: ' + ourText.css('font-size'));
 
