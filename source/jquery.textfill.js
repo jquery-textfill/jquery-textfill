@@ -61,6 +61,8 @@
 			console.warn.apply(console, arguments);
 		}
 
+		// Outputs all information on the current sizing
+		// of the font.
 		function _debug_sizing(prefix, ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
 
 			function _m(v1, v2) {
@@ -86,6 +88,12 @@
 			);
 		}
 
+		// Actually does the text resizing,
+		// the core of the plugin.
+		//
+		// Returns the current size of the font
+		// after resizing, in pixels.
+		//
 		function _sizing(prefix, ourText, func, max, maxHeight, maxWidth, minFontPixels, maxFontPixels) {
 
 			_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
@@ -106,7 +114,9 @@
 
 				_debug_sizing(prefix + ': ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
 			}
+
 			ourText.css('font-size', maxFontPixels);
+
 			if (func.call(ourText) <= max) {
 				minFontPixels = maxFontPixels;
 				_debug_sizing(prefix + '* ', ourText, maxHeight, maxWidth, minFontPixels, maxFontPixels);
@@ -138,9 +148,19 @@
 
 			var HfontSize = undefined;
 			if (!Opts.widthOnly)
-				HfontSize = _sizing('H', ourText, $.fn.height, maxHeight, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+				HfontSize = _sizing(
+					'H', ourText,
+					$.fn.height, maxHeight,
+					maxHeight, maxWidth,
+					minFontPixels, maxFontPixels
+				);
 
-			var WfontSize = _sizing('W', ourText, $.fn.width, maxWidth, maxHeight, maxWidth, minFontPixels, maxFontPixels);
+			var WfontSize = _sizing(
+				'W', ourText,
+				$.fn.width, maxWidth,
+				maxHeight, maxWidth,
+				minFontPixels, maxFontPixels
+			);
 
 			if (Opts.widthOnly) {
 
@@ -150,7 +170,10 @@
 				});
 
 				if(Opts.changeLineHeight)
-					ourText.parent().css('line-height', lineHeight * WfontSize + 'px');
+					ourText.parent().css(
+						'line-height',
+						(lineHeight * WfontSize + 'px')
+					);
 			}
 			else {
 				ourText.css('font-size', Math.min(HfontSize, WfontSize));
