@@ -130,7 +130,27 @@
 				minFontPixels, maxFontPixels
 			);
 
-			while (minFontPixels < maxFontPixels - 1) {
+			// The kernel of the whole plugin, take most attention
+			// on this part.
+			//
+			// This is a loop that keeps increasing the `font-size`
+			// until it fits the parent element.
+			//
+			// - Start from the minimal allowed value (`minFontPixels`)
+			// - Guesses an average font size (in pixels) for the font,
+			// - Resizes the text and sees if its size is within the
+			//   boundaries (`minFontPixels` and `maxFontPixels`).
+			//   - If so, keep guessing until we break.
+			//   - If not, return the last calculated size.
+			//
+			// I understand this is not optimized and we should
+			// consider implementing something akin to
+			// Daniel Hoffmann's answer here:
+			//
+			//     http://stackoverflow.com/a/17433451/1094964
+			//
+
+			while (minFontPixels < (maxFontPixels - 1)) {
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
@@ -218,7 +238,6 @@
 					maxHeight, maxWidth,
 					minFontPixels, maxFontPixels
 				);
-
 
 			// 2. Calculate which `font-size` would
 			//    be best for the Width
