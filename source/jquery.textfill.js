@@ -4,7 +4,7 @@
  * @author    Russ Painter
  * @author    Yu-Jie Lin
  * @author    Alexandre Dantas
- * @version   0.5.0
+ * @version   0.6.0
  * @date      2014-08-19
  * @copyright (c) 2014 Alexandre Dantas
  * @copyright (c) 2012-2013 Yu-Jie Lin
