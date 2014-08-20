@@ -3,8 +3,10 @@
 This jQuery plugin resizes text to make it fit into a container. The font size
 gets as big as possible.
 
-* [Homepage (with examples and documentation)][home].
+* [Homepage (with examples and documentation)][index].
 * [Live demo here][demo].
+
+![logo](http://jquery-textfill.github.io/images/logo.png)
 
 ## Usage
 
