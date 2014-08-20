@@ -7,7 +7,9 @@
 # http://closure-compiler.appspot.com/home
 
 all: jquery.textfill.min.js
-	# Result on "$<"
+	# Done! Result on "$<"
+	# Byte count:
+	@wc -c jquery.textfill.min.js jquery.textfill.js
 
 jquery.textfill.min.js: jquery.textfill.js
 	# Minifying "$@"...
