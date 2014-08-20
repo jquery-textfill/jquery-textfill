@@ -3,8 +3,9 @@
 This jQuery plugin resizes text to make it fit into a container. The font size
 gets as big as possible.
 
-* [Homepage (with examples and documentation)][index].
-* [Live demo here][demo].
+* [Homepage][index].
+* [Simple example][demo].
+* [Unit tests (assure plugin correctness)][tests].
 
 ![logo](http://jquery-textfill.github.io/images/logo.png)
 
@@ -126,11 +127,12 @@ source.
     Copyright (c) 2012-2013 Yu-Jie Lin
     Copyright (c) 2009 Russ Painter
 
-[index]: http://jquery-textfill.github.io/
-[demo]:  http://jquery-textfill.github.io/jquery-textfill/
-[issue]: https://github.com/jquery-textfill/jquery-textfill/issues
-[soq]:  http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
-[russ]: https://github.com/GeekyMonkey
-[yu]:   https://github.com/livibetter
-[alex]: https://github.com/alexdantas
+[index]:  http://jquery-textfill.github.io/
+[demo]:   http://jquery-textfill.github.io/example/
+[tests]:  http://jquery-textfill.github.io/unit-tests
+[issue]:  https://github.com/jquery-textfill/jquery-textfill/issues
+[soq]:    http://stackoverflow.com/questions/687998/auto-size-dynamic-text-to-fill-fixed-size-container
+[russ]:   https://github.com/GeekyMonkey
+[yu]:     https://github.com/livibetter
+[alex]:   https://github.com/alexdantas
 
