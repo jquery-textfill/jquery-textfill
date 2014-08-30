@@ -48,7 +48,6 @@ child was the `span`.
 | `maxFontPixels`   | Maximum font size (in pixels). The text will stretch up to this value.. If it's a negative value (`size <= 0`), the text will stretch to as big as the container can accommodate. | 40 |
 | `innerTag`        | The child element tag to resize. We select it by using `$(innerTag + ':visible:first', container)` | `span` |
 | `widthOnly`       | Will only resize to the width restraint. The font might become tiny under small containers.  | `false` |
-| `widthOnly`       | Will only resize for the width restraint | `false` |
 | `explicitWidth`   | Explicit width to resize. Defaults to the container's width. | `null` |
 | `explicitHeight`  | Explicit height to resize. Defaults to the container's height. | `null` |
 | `changeLineHeight`  | Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
