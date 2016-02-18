@@ -320,5 +320,10 @@
 		return this;
 	};
 
-})(window.jQuery);
+})(function() {
+	if (typeof module !== 'undefined' && module.exports) {
+		return require('jquery');
+	}
+	return window.jQuery;
+}());
 
