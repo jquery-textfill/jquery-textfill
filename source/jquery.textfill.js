@@ -150,7 +150,7 @@
 			//     http://stackoverflow.com/a/17433451/1094964
 			//
 
-			while (minFontPixels < (maxFontPixels - 1)) {
+			while (minFontPixels < (Math.floor(maxFontPixels) - 1)) {
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
