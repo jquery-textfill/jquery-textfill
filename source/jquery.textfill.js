@@ -154,11 +154,12 @@
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
+				var curSize = func.call(ourText);
 
-				if (func.call(ourText) <= max) {
+				if (curSize <= max) {
 					minFontPixels = fontSize;
 
-					if (func.call(ourText) == max)
+					if (curSize == max)
 						break;
 				}
 				else
