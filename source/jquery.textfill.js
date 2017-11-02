@@ -149,6 +149,11 @@
 			//
 			//     http://stackoverflow.com/a/17433451/1094964
 			//
+			
+			if (Opts.widthOnly) {
+				// We need to measure with nowrap otherwise wrapping occurs and the measurement is wrong
+      				ourText.css('white-space', 'nowrap' );
+			}			
 
 			while (minFontPixels < (maxFontPixels - 1)) {
 
