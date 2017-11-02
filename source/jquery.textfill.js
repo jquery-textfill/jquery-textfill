@@ -84,12 +84,12 @@
 
 				var marker = ' / ';
 
-				if (v1 > v2)
+				if (v1 > v2) {
 					marker = ' > ';
-
-				else if (v1 == v2)
+				}
+				else if (v1 == v2) {
 					marker = ' = ';
-
+				}
 				return marker;
 			}
 
@@ -158,11 +158,13 @@
 				if (func.call(ourText) <= max) {
 					minFontPixels = fontSize;
 
-					if (func.call(ourText) == max)
+					if (func.call(ourText) == max) {
 						break;
+					}
 				}
-				else
+				else {
 					maxFontPixels = fontSize;
+				}
 
 				_debug_sizing(
 					prefix, ourText,
@@ -231,13 +233,14 @@
 			//    be best for the Height
 			var fontSizeHeight = undefined;
 
-			if (! Opts.widthOnly)
+			if (! Opts.widthOnly) {
 				fontSizeHeight = _sizing(
 					'Height', ourText,
 					$.fn.height, maxHeight,
 					maxHeight, maxWidth,
 					minFontPixels, maxFontPixels
 				);
+			}
 
 			// 2. Calculate which `font-size` would
 			//    be best for the Width
@@ -258,22 +261,24 @@
 					'white-space': 'nowrap'
 				});
 
-				if (Opts.changeLineHeight)
+				if (Opts.changeLineHeight) {
 					ourText.parent().css(
 						'line-height',
 						(lineHeight * fontSizeWidth + 'px')
 					);
+				}
 			}
 			else {
 				var fontSizeFinal = Math.min(fontSizeHeight, fontSizeWidth);
 
 				ourText.css('font-size', fontSizeFinal);
 
-				if (Opts.changeLineHeight)
+				if (Opts.changeLineHeight) {
 					ourText.parent().css(
 						'line-height',
 						(lineHeight * fontSizeFinal) + 'px'
 					);
+				}
 			}
 
 			_debug(
@@ -290,8 +295,9 @@
 				ourText.css('font-size', oldFontSize);
 
 				// Failure callback
-				if (Opts.fail)
+				if (Opts.fail) {
 					Opts.fail(this);
+				}
 
 				_debug(
 					'[TextFill] Failure { ' +
@@ -313,8 +319,9 @@
 		});
 
 		// Complete callback
-		if (Opts.complete)
+		if (Opts.complete) {
 			Opts.complete(this);
+		}
 
 		_debug('[TextFill] End Debug');
 		return this;
