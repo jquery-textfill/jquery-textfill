@@ -100,7 +100,7 @@ Just _make sure_ to read the file [`CONTRIBUTING.md`](CONTRIBUTING.md) first.
 There we make a quick take on how you could help us.
 
 Also, there we lay down our rules for _reporting issues_ and _making pull
-requests_. Gotcha! Now you can't say we didn't told you about it!
+requests_. Gotcha! Now you can't say we didn't tell you about it!
 
 If you found something critical or just want to make a suggestion
 [open an issue][issue] and start typing right away.
