@@ -1,10 +1,10 @@
-﻿/**
+1﻿/**
  * @preserve  textfill
  * @name      jquery.textfill.js
  * @author    Russ Painter
  * @author    Yu-Jie Lin
  * @author    Alexandre Dantas
- * @version   0.6.0
+ * @version   0.6.1
  * @date      2014-08-19
  * @copyright (c) 2014 Alexandre Dantas
  * @copyright (c) 2012-2013 Yu-Jie Lin
@@ -30,7 +30,7 @@
 		// ______  _______ _______ _______ _     _        _______ _______
 		// |     \ |______ |______ |_____| |     | |         |    |______
 		// |_____/ |______ |       |     | |_____| |_____    |    ______|
-        //
+                //
 		// Merging user options with the default values
 
 		var defaults = {
