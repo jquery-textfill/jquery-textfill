@@ -155,7 +155,7 @@
       				ourText.css('white-space', 'nowrap' );
 			}			
 
-			while (minFontPixels < (maxFontPixels - 1)) {
+			while (minFontPixels < (Math.floor(maxFontPixels) - 1)) {
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
