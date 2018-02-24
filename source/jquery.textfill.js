@@ -150,11 +150,6 @@
 			//     http://stackoverflow.com/a/17433451/1094964
 			//
 			
-			if (Opts.widthOnly) {
-				// We need to measure with nowrap otherwise wrapping occurs and the measurement is wrong
-      				ourText.css('white-space', 'nowrap' );
-			}			
-
 			while (minFontPixels < (Math.floor(maxFontPixels) - 1)) {
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
@@ -238,7 +233,10 @@
 			//    be best for the Height
 			var fontSizeHeight = undefined;
 
-			if (! Opts.widthOnly) {
+			if (Opts.widthOnly) {
+				// We need to measure with nowrap otherwise wrapping occurs and the measurement is wrong
+      			ourText.css('white-space', 'nowrap' );
+			} else {
 				fontSizeHeight = _sizing(
 					'Height', ourText,
 					$.fn.height, maxHeight,
@@ -262,8 +260,7 @@
 
 			if (Opts.widthOnly) {
 				ourText.css({
-					'font-size'  : fontSizeWidth,
-					'white-space': 'nowrap'
+					'font-size'  : fontSizeWidth
 				});
 
 				if (Opts.changeLineHeight) {
