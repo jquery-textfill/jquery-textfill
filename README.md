@@ -113,18 +113,12 @@ beginning with a StackOverflow [question][soq].
 In very early 2012, [Yu-Jie Lin][yu] helped to move the project to GitHub with
 version _0.1_ and obtained the clearly stated open source licensing from Russ.
 
-Around July 2014 [Alexandre Dantas][alex] was made a contributor, currently
-maintaining the project.
+Around July 2014 [Alexandre Dantas][alex] was made a contributor.
 
 ## License
 
 `jquery-textfill` is licensed under the _MIT License_. See file
-[`COPYING.md`](COPYING.md) to see what you can and cannot do with the
-source.
-
-    Copyright (c) 2014 Alexandre Dantas
-    Copyright (c) 2012-2013 Yu-Jie Lin
-    Copyright (c) 2009 Russ Painter
+[`COPYING.md`](COPYING.md) to see what you can and cannot do with the source.
 
 [index]:  http://jquery-textfill.github.io/
 [demo]:   http://jquery-textfill.github.io/example/

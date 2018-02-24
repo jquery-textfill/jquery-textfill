@@ -1,14 +1,12 @@
 1﻿/**
  * @preserve  textfill
  * @name      jquery.textfill.js
- * @author    Russ Painter
+ * @author    Russ Painter (GeekyMonkey)
  * @author    Yu-Jie Lin
  * @author    Alexandre Dantas
  * @version   0.6.1
- * @date      2014-08-19
- * @copyright (c) 2014 Alexandre Dantas
- * @copyright (c) 2012-2013 Yu-Jie Lin
- * @copyright (c) 2009 Russ Painter
+ * @date      2018-02-24
+ * @copyright (c) 2009
  * @license   MIT License
  * @homepage  https://github.com/jquery-textfill/jquery-textfill
  * @example   http://jquery-textfill.github.io/jquery-textfill/index.html
@@ -30,7 +28,7 @@
 		// ______  _______ _______ _______ _     _        _______ _______
 		// |     \ |______ |______ |_____| |     | |         |    |______
 		// |_____/ |______ |       |     | |_____| |_____    |    ______|
-                //
+		//
 		// Merging user options with the default values
 
 		var defaults = {
@@ -40,7 +38,6 @@
 			innerTag         : 'span',
 			widthOnly        : false,
 			success          : null, // callback when a resizing is done
-			callback         : null, // callback when a resizing is done (deprecated, use success)
 			fail             : null, // callback when a resizing is failed
 			complete         : null, // callback when all is done
 			explicitWidth    : null,
@@ -311,12 +308,6 @@
 			}
 			else if (Opts.success) {
 				Opts.success(this);
-			}
-			else if (Opts.callback) {
-				_warn('callback is deprecated, use success, instead');
-
-				// Success callback
-				Opts.callback(this);
 			}
 		});
 

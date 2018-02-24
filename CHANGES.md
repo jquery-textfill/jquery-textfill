@@ -2,9 +2,15 @@
 
 ## Future
 
-* drop `callback` callback
-
 ## Development
+
+## Version 0.6.1 (2018-02-25)
+
+* Using the widthOnly option will apply a white-space:nowrap style so that the measured text won't wrap and therefore not have a proper width calculation. (by Klemens Ullman-Marx)
+* Potential infinite loop prevented (by joel Anna)
+* Code cleanups (by Klemens Ulman-Marx and GeekyMonkey)
+* Distributable files are now in the /dist/ folder. Makefile updated.
+* Remove deprecated "callback" callback
 
 ## Version 0.6.0 (2014-08-19T21:12:07Z)
 
