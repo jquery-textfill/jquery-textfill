@@ -50,7 +50,8 @@ child was the `span`.
 | `widthOnly`       | Will only resize to the width restraint. The font might become tiny under small containers.  | `false` |
 | `explicitWidth`   | Explicit width to resize. Defaults to the container's width. | `null` |
 | `explicitHeight`  | Explicit height to resize. Defaults to the container's height. | `null` |
-| `changeLineHeight`  | Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
+| `changeLineHeight`| Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
+| `allowOverflow`   | Allows text to overflow when minFontPixels is reached. Won't fail resizing, but instead will overflow container. | `false` |
 | `debug`           | Output debugging messages to console. | `false` |
 
 For example,

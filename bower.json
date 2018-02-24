@@ -8,6 +8,9 @@
 
 	"main": "source/jquery.textfill.js",
 
+	"ignore": [
+	],
+
 	"homepage" : "https://github.com/jquery-textfill/jquery-textfill",
 	"authors": [
 		{ "name": "Russ Painter", "email": "russp@geekymonkey.com", "homepage": "http://geekymonkey.com" }

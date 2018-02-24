@@ -21,6 +21,7 @@ Update size when page resizes for responsiveness.
 * Distributable files are now in the /dist/ folder. Makefile updated.
 * Remove deprecated "callback" callback
 * Compatable with webpack module jquery reference
+* add `allowOverflow` option (by lepolt)
 
 ## Version 0.6.0 (2014-08-19T21:12:07Z)
 
