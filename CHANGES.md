@@ -20,6 +20,7 @@ Update size when page resizes for responsiveness.
 * Code cleanups (by Klemens Ulman-Marx and GeekyMonkey)
 * Distributable files are now in the /dist/ folder. Makefile updated.
 * Remove deprecated "callback" callback
+* Compatable with webpack module jquery reference
 
 ## Version 0.6.0 (2014-08-19T21:12:07Z)
 

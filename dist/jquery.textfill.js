@@ -51,7 +51,7 @@
 		// |______ |     | | \  | |          |      |   |     | | \  | |______
 		// |       |_____| |  \_| |_____     |    __|__ |_____| |  \_| ______|
 		//
-		// Predefining the awesomenessw
+		// Predefining the awesomeness
 
 		// Output arguments to the Debug console
 		// if "Debug Mode" is enabled
@@ -242,7 +242,6 @@
 				);
 			}
 
-
 			// 2. Calculate which `font-size` would
 			//    be best for the Width
 			var fontSizeWidth = undefined;
@@ -321,5 +320,10 @@
 		return this;
 	};
 
-})(window.jQuery);
+})(function() {
+	if (typeof module !== 'undefined' && module.exports) {
+		return require('jquery');
+	}
+	return window.jQuery;
+}());
 
