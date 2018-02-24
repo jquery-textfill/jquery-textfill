@@ -25,7 +25,7 @@ QUnit.test('capped at 10px', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -47,7 +47,7 @@ QUnit.test('size up to max', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -69,7 +69,7 @@ QUnit.test('width be maxWidth', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -91,7 +91,7 @@ QUnit.test('height be maxHeight', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -168,7 +168,7 @@ QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = Tru
     span: {
       css: {
         'font-family': 'VT323',
-        'font-size': '20px',
+        'font-size': '20px'
       },
       text: 'test'
     }
@@ -186,6 +186,33 @@ QUnit.test('minFontPixels too big to fit in, W/H both fail, even widthOnly = Tru
 });
 
 
+QUnit.test('allowOverflow will not result in fail callback', 1, function (assert) { 
+  setup({
+    div: {
+      id: JTF,
+      width: 60,
+      height: 60
+    },
+    span: {
+      css: {
+        'font-family': 'VT323'
+      },
+      text: 'This text will cause overflow to occur, but will not result in a fail callback.'
+    }
+  });
+  var $jtf = $('#' + JTF);
+  $jtf.textfill({
+    minFontPixels: 14,
+    allowOverflow: true,
+    fail: function(e) {
+      assert.ok(false, 'fail callback should not have been called');
+    },
+    success: function (e) {
+      assert.equal(e, $jtf[0]);
+    }
+  });
+});
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Callbacks
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -199,7 +226,7 @@ QUnit.test('success callback', 1, function(assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -217,33 +244,6 @@ QUnit.test('success callback', 1, function(assert) {
 });
 
 
-QUnit.test('callback callback (deprecated)', 1, function(assert) {
-  setup({
-    div: {
-      id: JTF,
-      width: 285,
-      height: 210
-    },
-    span: {
-      css: {
-        'font-family': 'VT323',
-      },
-      text: 'test'
-    }
-  });
-
-  var $jtf = $('#' + JTF);
-  var $span = $jtf.find('span');
-  $jtf.textfill({
-    debug: true,
-    maxFontPixels: 0,
-    callback: function(e) {
-      assert.equal(e, $jtf[0]);
-    }
-  });
-});
-
-
 QUnit.test('fail callback', 1, function (assert) {
   setup({
     div: {
@@ -254,7 +254,7 @@ QUnit.test('fail callback', 1, function (assert) {
     span: {
       css: {
         'font-family': 'VT323',
-        'font-size': '20px',
+        'font-size': '20px'
       },
       text: 'test'
     }
@@ -273,7 +273,7 @@ QUnit.test('fail callback', 1, function (assert) {
 });
 
 
-QUnit.test('complete callback', 2, function(assert) {
+QUnit.test('complete callback', 1, function(assert) {
   setup({
     div: {
       id: JTF,
@@ -282,7 +282,7 @@ QUnit.test('complete callback', 2, function(assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -292,9 +292,6 @@ QUnit.test('complete callback', 2, function(assert) {
   $jtf.textfill({
     debug: true,
     maxFontPixels: 0,
-    callback: function(e) {
-      assert.equal(e, $jtf[0]);
-    },
     complete: function(e) {
       assert.equal(e, $jtf);
     }
@@ -337,7 +334,7 @@ QUnit.test('debug used', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -358,7 +355,7 @@ QUnit.test('debug not used', function (assert) {
     },
     span: {
       css: {
-        'font-family': 'VT323',
+        'font-family': 'VT323'
       },
       text: 'test'
     }
@@ -368,4 +365,3 @@ QUnit.test('debug not used', function (assert) {
   $jtf.textfill({debug: false, maxFontPixels: 10});
   assert.equal(console.debug_called, false);
 });
-

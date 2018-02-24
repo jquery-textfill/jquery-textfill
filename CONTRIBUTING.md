@@ -63,7 +63,7 @@ Also, before you submit, make sure:
 * The Coding style generally matches
 * It passes all (or most) [tests][]
 * *Optional* Update [`README`](README.md) if necessary
-* *Optional* Update [`CHANGES`](CHANGES.md) if worth mentioning
+* *Optional* Update [`CHANGES`](CHANGES.md) if worth mentioning in the Development section at the top
 
 [tests]: http://jquery-textfill.github.io/jquery-textfill/tests.html
 

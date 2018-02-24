@@ -2,9 +2,26 @@
 
 ## Future
 
-* drop `callback` callback
+Wait for fonts to load and re-size. Only available on some browsers.
+https://stackoverflow.com/questions/5680013/how-to-be-notified-once-a-web-font-has-loaded
+  document.fonts.ready.then(function () {
+    alert('All fonts in use by visible text have loaded.');
+      alert('Roboto loaded? ' + document.fonts.check('1em Roboto'));  // true
+  });
+
+Update size when page resizes for responsiveness. 
 
 ## Development
+
+## Version 0.6.1 (2018-02-25)
+
+* Using the widthOnly option will apply a white-space:nowrap style so that the measured text won't wrap and therefore not have a proper width calculation. (by Klemens Ullman-Marx)
+* Potential infinite loop prevented (by joel Anna)
+* Code cleanups (by Klemens Ulman-Marx and GeekyMonkey)
+* Distributable files are now in the /dist/ folder. Makefile updated.
+* Remove deprecated "callback" callback
+* Compatable with webpack module jquery reference
+* add `allowOverflow` option (by lepolt)
 
 ## Version 0.6.0 (2014-08-19T21:12:07Z)
 

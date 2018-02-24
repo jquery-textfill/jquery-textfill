@@ -1,4 +1,4 @@
-/**
+1﻿/**
  * @preserve  textfill
  * @name      jquery.textfill.js
  * @author    Russ Painter (GeekyMonkey)
@@ -153,12 +153,11 @@
 
 				var fontSize = Math.floor((minFontPixels + maxFontPixels) / 2);
 				ourText.css('font-size', fontSize);
-				var curSize = func.call(ourText);
 
-				if (curSize <= max) {
+				if (func.call(ourText) <= max) {
 					minFontPixels = fontSize;
 
-					if (curSize == max)
+					if (func.call(ourText) == max) {
 						break;
 					}
 				}

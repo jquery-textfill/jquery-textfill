@@ -1,5 +1,5 @@
+- Copyright (c) 2009-2018 Russ Painter (GeekyMonkey)
 - Copyright (c) 2012-2013 Yu-Jie Lin
-- Copyright (c) 2009 Russ Painter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in

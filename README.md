@@ -50,7 +50,8 @@ child was the `span`.
 | `widthOnly`       | Will only resize to the width restraint. The font might become tiny under small containers.  | `false` |
 | `explicitWidth`   | Explicit width to resize. Defaults to the container's width. | `null` |
 | `explicitHeight`  | Explicit height to resize. Defaults to the container's height. | `null` |
-| `changeLineHeight`  | Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
+| `changeLineHeight`| Also change the `line-height` of the parent container. This might be useful when shrinking to a small container. | `false` |
+| `allowOverflow`   | Allows text to overflow when minFontPixels is reached. Won't fail resizing, but instead will overflow container. | `false` |
 | `debug`           | Output debugging messages to console. | `false` |
 
 For example,
@@ -100,7 +101,7 @@ Just _make sure_ to read the file [`CONTRIBUTING.md`](CONTRIBUTING.md) first.
 There we make a quick take on how you could help us.
 
 Also, there we lay down our rules for _reporting issues_ and _making pull
-requests_. Gotcha! Now you can't say we didn't told you about it!
+requests_. Gotcha! Now you can't say we didn't tell you about it!
 
 If you found something critical or just want to make a suggestion
 [open an issue][issue] and start typing right away.
@@ -113,18 +114,12 @@ beginning with a StackOverflow [question][soq].
 In very early 2012, [Yu-Jie Lin][yu] helped to move the project to GitHub with
 version _0.1_ and obtained the clearly stated open source licensing from Russ.
 
-Around July 2014 [Alexandre Dantas][alex] was made a contributor, currently
-maintaining the project.
+Around July 2014 [Alexandre Dantas][alex] was made a contributor.
 
 ## License
 
 `jquery-textfill` is licensed under the _MIT License_. See file
-[`COPYING.md`](COPYING.md) to see what you can and cannot do with the
-source.
-
-    Copyright (c) 2014 Alexandre Dantas
-    Copyright (c) 2012-2013 Yu-Jie Lin
-    Copyright (c) 2009 Russ Painter
+[`COPYING.md`](COPYING.md) to see what you can and cannot do with the source.
 
 [index]:  http://jquery-textfill.github.io/
 [demo]:   http://jquery-textfill.github.io/example/
