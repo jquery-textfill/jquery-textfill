@@ -43,6 +43,7 @@
 			explicitWidth    : null,
 			explicitHeight   : null,
 			changeLineHeight : false,
+			truncateOnFail   : false,
 			allowOverflow    : false // If true, text will stay at minFontPixels but overflow container w/out failing 
 		};
 
@@ -197,7 +198,30 @@
 
 			// Contains the child element we will resize.
 			// $(this) means the parent container
-			var ourText = $(Opts.innerTag + ':visible:first', this);
+			var ourText = $(Opts.innerTag + ':first', this);
+
+			_debug('[TextFill] Inner text: ' + ourText.text());
+			_debug('[TextFill] All options: ', Opts);
+			_debug('[TextFill] Maximum sizes: { ' +
+				   'Height: ' + maxHeight + 'px, ' +
+				   'Width: '  + maxWidth  + 'px' + ' }'
+				  );
+
+			if (!ourText.is(':visible')) {
+				// Failure callback
+				if (Opts.fail)
+					Opts.fail(this);
+
+				_debug(
+					'[TextFill] Failure { ' +
+					'Current Width: '  + ourText.width()  + ', ' +
+					'Maximum Width: '  + maxWidth         + ', ' +
+					'Current Height: ' + ourText.height() + ', ' +
+					'Maximum Height: ' + maxHeight        + ' }'
+				);
+
+				return;
+			}
 
 			// Will resize to this dimensions.
 			// Use explicit dimensions when specified
@@ -208,13 +232,6 @@
 
 			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
 
-			_debug('[TextFill] Inner text: ' + ourText.text());
-			_debug('[TextFill] All options: ', Opts);
-			_debug('[TextFill] Maximum sizes: { ' +
-				   'Height: ' + maxHeight + 'px, ' +
-				   'Width: '  + maxWidth  + 'px' + ' }'
-				  );
-
 			var minFontPixels = Opts.minFontPixels;
 
 			// Remember, if this `maxFontPixels` is negative,
@@ -223,7 +240,6 @@
 			var maxFontPixels = (Opts.maxFontPixels <= 0 ?
 								 maxHeight :
 								 Opts.maxFontPixels);
-
 
 			// Let's start it all!
 
@@ -288,7 +304,8 @@
 			);
 
 			// Oops, something wrong happened!
-			// We weren't supposed to exceed the original size
+			// If font-size increasing, we weren't supposed to exceed the original size 
+			// If font-size decreasing, we hit minFontPixels, and still won't fit 
 			if ((ourText.width()  > maxWidth && !Opts.allowOverflow) ||
 				(ourText.height() > maxHeight && !Opts.widthOnly && !Opts.allowOverflow)) { 
 

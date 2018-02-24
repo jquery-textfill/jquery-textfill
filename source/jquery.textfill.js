@@ -43,6 +43,7 @@
 			explicitWidth    : null,
 			explicitHeight   : null,
 			changeLineHeight : false,
+			truncateOnFail   : false,
 			allowOverflow    : false // If true, text will stay at minFontPixels but overflow container w/out failing 
 		};
 
@@ -240,7 +241,6 @@
 								 maxHeight :
 								 Opts.maxFontPixels);
 
-
 			// Let's start it all!
 
 			// 1. Calculate which `font-size` would
@@ -304,7 +304,8 @@
 			);
 
 			// Oops, something wrong happened!
-			// We weren't supposed to exceed the original size
+			// If font-size increasing, we weren't supposed to exceed the original size 
+			// If font-size decreasing, we hit minFontPixels, and still won't fit 
 			if ((ourText.width()  > maxWidth && !Opts.allowOverflow) ||
 				(ourText.height() > maxHeight && !Opts.widthOnly && !Opts.allowOverflow)) { 
 
