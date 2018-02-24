@@ -197,7 +197,30 @@
 
 			// Contains the child element we will resize.
 			// $(this) means the parent container
-			var ourText = $(Opts.innerTag + ':visible:first', this);
+			var ourText = $(Opts.innerTag + ':first', this);
+
+			_debug('[TextFill] Inner text: ' + ourText.text());
+			_debug('[TextFill] All options: ', Opts);
+			_debug('[TextFill] Maximum sizes: { ' +
+				   'Height: ' + maxHeight + 'px, ' +
+				   'Width: '  + maxWidth  + 'px' + ' }'
+				  );
+
+			if (!ourText.is(':visible')) {
+				// Failure callback
+				if (Opts.fail)
+					Opts.fail(this);
+
+				_debug(
+					'[TextFill] Failure { ' +
+					'Current Width: '  + ourText.width()  + ', ' +
+					'Maximum Width: '  + maxWidth         + ', ' +
+					'Current Height: ' + ourText.height() + ', ' +
+					'Maximum Height: ' + maxHeight        + ' }'
+				);
+
+				return;
+			}
 
 			// Will resize to this dimensions.
 			// Use explicit dimensions when specified
@@ -207,13 +230,6 @@
 			var oldFontSize = ourText.css('font-size');
 
 			var lineHeight  = parseFloat(ourText.css('line-height')) / parseFloat(oldFontSize);
-
-			_debug('[TextFill] Inner text: ' + ourText.text());
-			_debug('[TextFill] All options: ', Opts);
-			_debug('[TextFill] Maximum sizes: { ' +
-				   'Height: ' + maxHeight + 'px, ' +
-				   'Width: '  + maxWidth  + 'px' + ' }'
-				  );
 
 			var minFontPixels = Opts.minFontPixels;
 
