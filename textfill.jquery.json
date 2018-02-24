@@ -1,6 +1,6 @@
 {
 	"name": "textfill",
-	"version": "0.6.0",
+	"version": "0.6.1",
 	"title": "jQuery TextFill",
 	"author": {
 		"name": "jQuery TextFill contributors",
@@ -27,9 +27,9 @@
 	"bugs": "https://github.com/jquery-textfill/jquery-textfill/issues",
 	"maintainers": [
 		{
-			"name": "Alexandre Dantas",
-			"email": "eu@alexdantas.net",
-			"url": "http://alexdantas.net/"
+			"name": "Russ Painter",
+			"email": "russp@geekymonkey.com",
+			"url": "http://geekymonkey.com"
 		}
 	]
 }
