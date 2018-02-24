@@ -13,7 +13,11 @@ Update size when page resizes for responsiveness.
 
 ## Development
 
-## Version 0.6.1 (2018-02-25)
+## Version 0.6.2 (2018-02-24)
+* Performance improvement
+* Added option to truncate without failing
+
+## Version 0.6.1 (2018-02-23)
 
 * Using the widthOnly option will apply a white-space:nowrap style so that the measured text won't wrap and therefore not have a proper width calculation. (by Klemens Ullman-Marx)
 * Potential infinite loop prevented (by joel Anna)

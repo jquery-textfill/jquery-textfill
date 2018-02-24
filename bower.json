@@ -1,7 +1,7 @@
 {
 	"name"        : "jquery-textfill",
 	"description" : "Chooses the optimal font size for text to fit into a container.",
-	"version"     : "0.6.1",
+	"version"     : "0.6.2",
 	"keywords"    : [
 		"jquery", "text", "resize", "container", "font"
 	],

@@ -4,7 +4,7 @@
  * @author    Russ Painter (GeekyMonkey)
  * @author    Yu-Jie Lin
  * @author    Alexandre Dantas
- * @version   0.6.1
+ * @version   0.6.2
  * @date      2018-02-24
  * @copyright (c) 2009
  * @license   MIT License
@@ -158,7 +158,7 @@
 				if (curSize <= max) {
 					minFontPixels = fontSize;
 
-					if (curSize == max)
+					if (curSize == max) {
 						break;
 					}
 				}
