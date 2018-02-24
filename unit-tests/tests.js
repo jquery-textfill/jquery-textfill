@@ -217,33 +217,6 @@ QUnit.test('success callback', 1, function(assert) {
 });
 
 
-QUnit.test('callback callback (deprecated)', 1, function(assert) {
-  setup({
-    div: {
-      id: JTF,
-      width: 285,
-      height: 210
-    },
-    span: {
-      css: {
-        'font-family': 'VT323',
-      },
-      text: 'test'
-    }
-  });
-
-  var $jtf = $('#' + JTF);
-  var $span = $jtf.find('span');
-  $jtf.textfill({
-    debug: true,
-    maxFontPixels: 0,
-    callback: function(e) {
-      assert.equal(e, $jtf[0]);
-    }
-  });
-});
-
-
 QUnit.test('fail callback', 1, function (assert) {
   setup({
     div: {
@@ -273,7 +246,7 @@ QUnit.test('fail callback', 1, function (assert) {
 });
 
 
-QUnit.test('complete callback', 2, function(assert) {
+QUnit.test('complete callback', 1, function(assert) {
   setup({
     div: {
       id: JTF,
@@ -292,9 +265,6 @@ QUnit.test('complete callback', 2, function(assert) {
   $jtf.textfill({
     debug: true,
     maxFontPixels: 0,
-    callback: function(e) {
-      assert.equal(e, $jtf[0]);
-    },
     complete: function(e) {
       assert.equal(e, $jtf);
     }
